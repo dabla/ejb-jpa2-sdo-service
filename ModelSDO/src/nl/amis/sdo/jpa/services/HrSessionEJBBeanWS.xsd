@@ -1,0 +1,237 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/nl.amis.sdo.jpa.services/"
+     xmlns:ns0="/nl.amis.sdo.jpa.entities/" xmlns:ns3="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JServiceCS.xsd"/>
+    <import namespace="/nl.amis.sdo.jpa.entities/" schemaLocation="../entities/DepartmentsSDO.xsd"/>
+    <import namespace="/nl.amis.sdo.jpa.entities/" schemaLocation="../entities/EmployeesSDO.xsd"/>
+    <!-- BEGIN SDO Elements -->
+    <element name="getEmployees">
+        <complexType>
+            <sequence>
+                <element name="employeeId" type="long"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createEmployees">
+        <complexType>
+            <sequence>
+                <element name="employees" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateEmployees">
+        <complexType>
+            <sequence>
+                <element name="employees" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deleteEmployees">
+        <complexType>
+            <sequence>
+                <element name="employees" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deleteEmployeesResponse">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="mergeEmployees">
+        <complexType>
+            <sequence>
+                <element name="employees" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="mergeEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EmployeesSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEmployees">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns3:FindCriteria"/>
+                <element name="findControl" type="ns3:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EmployeesSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processEmployees">
+        <complexType>
+            <sequence>
+                <element name="changeOperation" type="string"/>
+                <element name="employees" type="ns0:EmployeesSDO" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="processControl" type="ns3:ProcessControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:EmployeesSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processCSEmployees">
+        <complexType>
+            <sequence>
+                <element name="processData" type="ns3:ProcessData"/>
+                <element name="processControl" type="ns3:ProcessControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processCSEmployeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns3:ProcessData"/>
+            </sequence>
+        </complexType>
+    </element>
+    <!-- END SDO Elements -->
+    <element name="getDepartments">
+        <complexType>
+            <sequence>
+                <element name="departmentId" type="long"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createDepartments">
+        <complexType>
+            <sequence>
+                <element name="departments" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="createDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateDepartments">
+        <complexType>
+            <sequence>
+                <element name="departments" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deleteDepartments">
+        <complexType>
+            <sequence>
+                <element name="departments" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deleteDepartmentsResponse">
+        <complexType>
+            <sequence/>
+        </complexType>
+    </element>
+    <element name="mergeDepartments">
+        <complexType>
+            <sequence>
+                <element name="departments" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="mergeDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findDepartments">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns3:FindCriteria"/>
+                <element name="findControl" type="ns3:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processDepartments">
+        <complexType>
+            <sequence>
+                <element name="changeOperation" type="string"/>
+                <element name="departments" type="ns0:DepartmentsSDO" minOccurs="0" maxOccurs="unbounded"/>
+                <element name="processControl" type="ns3:ProcessControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:DepartmentsSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processCSDepartments">
+        <complexType>
+            <sequence>
+                <element name="processData" type="ns3:ProcessData"/>
+                <element name="processControl" type="ns3:ProcessControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="processCSDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns3:ProcessData"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
