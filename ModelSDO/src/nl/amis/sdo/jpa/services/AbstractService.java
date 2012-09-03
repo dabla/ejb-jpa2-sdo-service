@@ -190,6 +190,8 @@ public abstract class AbstractService {
       final List<S> resultListSDO = new ArrayList<S>(resultList.size());
       
       for (final T entity : resultList) {
+        System.out.println("entity: " + entity);
+        System.out.println("dataObject: " + entity.toDataObject());
         resultListSDO.add(entity.toDataObject());
       }
       

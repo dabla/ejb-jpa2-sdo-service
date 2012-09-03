@@ -105,78 +105,78 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
     }
   }
 
-  public DepartmentsSDO getDepartments(Long employeeId) {
+  public DepartmentsSDO getDepartmentsSDO(Long employeeId) {
     return (DepartmentsSDO)get(Departments.class, employeeId);
   }
 
-  public DepartmentsSDO createDepartments(DepartmentsSDO departments) {
+  public DepartmentsSDO createDepartmentsSDO(DepartmentsSDO departments) {
     return create(departments);
   }
 
-  public DepartmentsSDO updateDepartments(DepartmentsSDO departments) {
+  public DepartmentsSDO updateDepartmentsSDO(DepartmentsSDO departments) {
     return merge(Departments.class, departments);
   }
 
-  public void deleteDepartments(DepartmentsSDO departments) {
+  public void deleteDepartmentsSDO(DepartmentsSDO departments) {
     delete(Departments.class, departments);
   }
 
-  public DepartmentsSDO mergeDepartments(DepartmentsSDO departments) {
+  public DepartmentsSDO mergeDepartmentsSDO(DepartmentsSDO departments) {
     return merge(Departments.class, departments);
   }
 
-  public List<DepartmentsSDO> findDepartments(FindCriteria findCriteria,
+  public List<DepartmentsSDO> findDepartmentsSDO(FindCriteria findCriteria,
                                               FindControl findControl) {
     return find(Departments.class, findCriteria, findControl);
   }
 
-  public List<DepartmentsSDO> processDepartments(String changeOperation,
+  public List<DepartmentsSDO> processDepartmentsSDO(String changeOperation,
                                                  List<DepartmentsSDO> departments,
                                                  ProcessControl processControl) {
     return process(Departments.class, changeOperation, departments);
   }
 
-  public ProcessData processCSDepartments(ProcessData processData,
+  public ProcessData processCSDepartmentsSDO(ProcessData processData,
                                           ProcessControl processControl) {
     return process(Departments.class, processData);
   }
 
-  public EmployeesSDO getEmployees(Long employeeId) {
+  public EmployeesSDO getEmployeesSDO(Long employeeId) {
     System.out.println("getEmployees: " + employeeId);
     return (EmployeesSDO)get(Employees.class, employeeId);
   }
 
-  public EmployeesSDO createEmployees(EmployeesSDO employees) {
+  public EmployeesSDO createEmployeesSDO(EmployeesSDO employees) {
     System.out.println("createEmployees: " + employees);
     return create(employees);
   }
 
-  public EmployeesSDO updateEmployees(EmployeesSDO employees) {
+  public EmployeesSDO updateEmployeesSDO(EmployeesSDO employees) {
     System.out.println("updateEmployees: " + employees);
     return merge(Employees.class, employees);
   }
 
-  public void deleteEmployees(EmployeesSDO employees) {
+  public void deleteEmployeesSDO(EmployeesSDO employees) {
     System.out.println("deleteEmployees: " + employees);
     delete(Employees.class, employees);
   }
 
-  public EmployeesSDO mergeEmployees(EmployeesSDO employees) {
+  public EmployeesSDO mergeEmployeesSDO(EmployeesSDO employees) {
     return merge(Employees.class, employees);
   }
 
-  public List<EmployeesSDO> findEmployees(FindCriteria findCriteria , 
-    FindControl findControl) throws RuntimeException {
+  public List<EmployeesSDO> findEmployeesSDO(FindCriteria findCriteria , 
+    FindControl findControl) {
     return find(Employees.class, findCriteria, findControl);
   }
 
-  public List<EmployeesSDO> processEmployees(String changeOperation,
+  public List<EmployeesSDO> processEmployeesSDO(String changeOperation,
                                              List<EmployeesSDO> employees,
                                              ProcessControl processControl) {
     return process(Employees.class, changeOperation, employees);
   }
 
-  public ProcessData processCSEmployees(ProcessData processData,
+  public ProcessData processCSEmployeesSDO(ProcessData processData,
                                         ProcessControl processControl) {
     return process(Employees.class, processData);
   }

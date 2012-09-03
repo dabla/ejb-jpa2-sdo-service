@@ -1,5 +1,7 @@
 package nl.amis.sdo.jpa;
 
+import commonj.sdo.helper.DataFactory;
+import commonj.sdo.helper.TypeHelper;
 import commonj.sdo.helper.XSDHelper;
 
 import java.util.Hashtable;
@@ -12,20 +14,34 @@ import javax.naming.NamingException;
 import nl.amis.sdo.jpa.entities.DepartmentsSDO;
 import nl.amis.sdo.jpa.services.HrSessionEJB;
 
+import oracle.jbo.common.service.types.FindControl;
+import oracle.jbo.common.service.types.FindCriteria;
+import oracle.jbo.common.service.types.FindControlImpl;
+import oracle.jbo.common.service.types.FindCriteriaImpl;
+
+import org.eclipse.persistence.sdo.SDOType;
+import org.eclipse.persistence.sdo.helper.jaxb.JAXBHelperContext;
+
 public class HrSessionEJBClientSDO {
     public HrSessionEJBClientSDO() {
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
             ClassLoader loader =
                 Thread.currentThread().getContextClassLoader();
-            XSDHelper.INSTANCE.define(loader.getResourceAsStream("nl/amis/sdo/jpa/entities/EmployeesSDO.xsd"),
-                                      "nl/amis/sdo/jpa/entities/");
-            XSDHelper.INSTANCE.define(loader.getResourceAsStream("nl/amis/sdo/jpa/entities/DepartmentsSDO.xsd"),
-                                      "nl/amis/sdo/jpa/entities/");
-            XSDHelper.INSTANCE.define(loader.getResourceAsStream("nl/amis/sdo/jpa/services/HrSessionEJBBeanWS.xsd"),
-                                      "nl/amis/sdo/jpa/services/");
+          XSDHelper.INSTANCE.define(loader.getResourceAsStream("META-INF/wsdl/ServiceException.xsd"),
+                                    "META-INF/wsdl/");
+          XSDHelper.INSTANCE.define(loader.getResourceAsStream("META-INF/wsdl/BC4JService.xsd"),
+                                    "META-INF/wsdl/");
+          XSDHelper.INSTANCE.define(loader.getResourceAsStream("META-INF/wsdl/BC4JServiceCS.xsd"),
+                                    "META-INF/wsdl/");
+          XSDHelper.INSTANCE.define(loader.getResourceAsStream("nl/amis/sdo/jpa/entities/EmployeesSDO.xsd"),
+                                    "nl/amis/sdo/jpa/entities/");
+          XSDHelper.INSTANCE.define(loader.getResourceAsStream("nl/amis/sdo/jpa/entities/DepartmentsSDO.xsd"),
+                                    "nl/amis/sdo/jpa/entities/");
+          XSDHelper.INSTANCE.define(loader.getResourceAsStream("nl/amis/sdo/jpa/services/HrSessionEJBBeanWS.xsd"),
+                                    "nl/amis/sdo/jpa/services/");
 
             final Context context = getInitialContext();
           System.out.println("context = " +
@@ -34,8 +50,17 @@ public class HrSessionEJBClientSDO {
                 (HrSessionEJB)context.lookup("EjbSdoService-HrSessionEJB#nl.amis.sdo.jpa.services.HrSessionEJB");
           System.out.println("hrSessionEJB = " +
                              hrSessionEJB);
+            
+          final FindCriteria findCriteria = (FindCriteria)DataFactory.INSTANCE.create(TypeHelper.INSTANCE.getType(FindCriteria.class));
+          findCriteria.setFetchStart(0);
+          findCriteria.setFetchSize(-1);
+          findCriteria.setExcludeAttribute(false);
+          
+          final FindControl findControl = (FindControl)DataFactory.INSTANCE.create(TypeHelper.INSTANCE.getType(FindControl.class));
+          findControl.setRetrieveAllTranslations(false);
+          
             for (DepartmentsSDO departments :
-                 (List<DepartmentsSDO>)hrSessionEJB.getDepartmentsFindAllSDO()) {
+                 (List<DepartmentsSDO>)hrSessionEJB.findDepartmentsSDO(findCriteria,findControl)) {
                 printDepartments(departments);
             }
 

@@ -13,176 +13,176 @@
         </schema>
     </wsdl:types>
     <!-- BEGIN SDO Messages -->
-    <wsdl:message name="HrSessionEJBBeanWS_getEmployees">
-        <wsdl:part name="parameters" element="types:getEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_getEmployeesSDO">
+        <wsdl:part name="parameters" element="types:getEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_getEmployeesResponse">
-        <wsdl:part name="parameters" element="types:getEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_getEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:getEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_createEmployees">
-        <wsdl:part name="parameters" element="types:createEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_createEmployeesSDO">
+        <wsdl:part name="parameters" element="types:createEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_createEmployeesResponse">
-        <wsdl:part name="parameters" element="types:createEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_createEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:createEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_updateEmployees">
-        <wsdl:part name="parameters" element="types:updateEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_updateEmployeesSDO">
+        <wsdl:part name="parameters" element="types:updateEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_updateEmployeesResponse">
-        <wsdl:part name="parameters" element="types:updateEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_updateEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:updateEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_deleteEmployees">
-        <wsdl:part name="parameters" element="types:deleteEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_deleteEmployeesSDO">
+        <wsdl:part name="parameters" element="types:deleteEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_deleteEmployeesResponse">
-        <wsdl:part name="parameters" element="types:deleteEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_deleteEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:deleteEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_mergeEmployees">
-        <wsdl:part name="parameters" element="types:mergeEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_mergeEmployeesSDO">
+        <wsdl:part name="parameters" element="types:mergeEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_mergeEmployeesResponse">
-        <wsdl:part name="parameters" element="types:mergeEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_mergeEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:mergeEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_findEmployees">
-        <wsdl:part name="parameters" element="types:findEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_findEmployeesSDO">
+        <wsdl:part name="parameters" element="types:findEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_findEmployeesResponse">
-        <wsdl:part name="parameters" element="types:findEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_findEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:findEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processEmployees">
-        <wsdl:part name="parameters" element="types:processEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processEmployeesSDO">
+        <wsdl:part name="parameters" element="types:processEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processEmployeesResponse">
-        <wsdl:part name="parameters" element="types:processEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:processEmployeesSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processCSEmployees">
-        <wsdl:part name="parameters" element="types:processCSEmployees"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processCSEmployeesSDO">
+        <wsdl:part name="parameters" element="types:processCSEmployeesSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processCSEmployeesResponse">
-        <wsdl:part name="parameters" element="types:processCSEmployeesResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processCSEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:processCSEmployeesSDOResponse"/>
     </wsdl:message>
     <!-- END SDO Messages -->
-    <wsdl:message name="HrSessionEJBBeanWS_getDepartments">
-        <wsdl:part name="parameters" element="types:getDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_getDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:getDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_getDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:getDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_getDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:getDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_createDepartments">
-        <wsdl:part name="parameters" element="types:createDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_createDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:createDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_createDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:createDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_createDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:createDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_updateDepartments">
-        <wsdl:part name="parameters" element="types:updateDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_updateDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:updateDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_updateDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:updateDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_updateDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:updateDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_deleteDepartments">
-        <wsdl:part name="parameters" element="types:deleteDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_deleteDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:deleteDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_deleteDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:deleteDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_deleteDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:deleteDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_mergeDepartments">
-        <wsdl:part name="parameters" element="types:mergeDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_mergeDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:mergeDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_mergeDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:mergeDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_mergeDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:mergeDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_findDepartments">
-        <wsdl:part name="parameters" element="types:findDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_findDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:findDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_findDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:findDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_findDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:findDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processDepartments">
-        <wsdl:part name="parameters" element="types:processDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:processDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:processDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:processDepartmentsSDOResponse"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processCSDepartments">
-        <wsdl:part name="parameters" element="types:processCSDepartments"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processCSDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:processCSDepartmentsSDO"/>
     </wsdl:message>
-    <wsdl:message name="HrSessionEJBBeanWS_processCSDepartmentsResponse">
-        <wsdl:part name="parameters" element="types:processCSDepartmentsResponse"/>
+    <wsdl:message name="HrSessionEJBBeanWS_processCSDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:processCSDepartmentsSDOResponse"/>
     </wsdl:message>
     <wsdl:portType name="HrSessionEJBBeanWS">
         <!-- BEGIN SDO Operations -->
-        <wsdl:operation name="getEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_getEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_getEmployeesResponse"/>
+        <wsdl:operation name="getEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_getEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_getEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="createEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_createEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_createEmployeesResponse"/>
+        <wsdl:operation name="createEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_createEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_createEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="updateEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_updateEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_updateEmployeesResponse"/>
+        <wsdl:operation name="updateEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_updateEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_updateEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="deleteEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_deleteEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_deleteEmployeesResponse"/>
+        <wsdl:operation name="deleteEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_deleteEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_deleteEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="mergeEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_mergeEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_mergeEmployeesResponse"/>
+        <wsdl:operation name="mergeEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_mergeEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_mergeEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="findEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_findEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_findEmployeesResponse"/>
+        <wsdl:operation name="findEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_findEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_findEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="processEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_processEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_processEmployeesResponse"/>
+        <wsdl:operation name="processEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_processEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_processEmployeesSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="processCSEmployees">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_processCSEmployees"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_processCSEmployeesResponse"/>
+        <wsdl:operation name="processCSEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_processCSEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_processCSEmployeesSDOResponse"/>
         </wsdl:operation>
         <!-- END SDO Operations -->
-        <wsdl:operation name="getDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_getDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_getDepartmentsResponse"/>
+        <wsdl:operation name="getDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_getDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_getDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="createDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_createDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_createDepartmentsResponse"/>
+        <wsdl:operation name="createDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_createDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_createDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="updateDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_updateDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_updateDepartmentsResponse"/>
+        <wsdl:operation name="updateDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_updateDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_updateDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="deleteDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_deleteDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_deleteDepartmentsResponse"/>
+        <wsdl:operation name="deleteDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_deleteDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_deleteDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="mergeDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_mergeDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_mergeDepartmentsResponse"/>
+        <wsdl:operation name="mergeDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_mergeDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_mergeDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="findDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_findDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_findDepartmentsResponse"/>
+        <wsdl:operation name="findDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_findDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_findDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="processDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_processDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_processDepartmentsResponse"/>
+        <wsdl:operation name="processDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_processDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_processDepartmentsSDOResponse"/>
         </wsdl:operation>
-        <wsdl:operation name="processCSDepartments">
-            <wsdl:input message="tns:HrSessionEJBBeanWS_processCSDepartments"/>
-            <wsdl:output message="tns:HrSessionEJBBeanWS_processCSDepartmentsResponse"/>
+        <wsdl:operation name="processCSDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_processCSDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_processCSDepartmentsSDOResponse"/>
         </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="HrSessionEJBBeanWSSoapHttp" type="tns:HrSessionEJBBeanWS">
         <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
         <!-- BEGIN SDO Bindings -->
-        <wsdl:operation name="getEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/getEmployees"/>
+        <wsdl:operation name="getEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/getEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -190,8 +190,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="createEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/createEmployees"/>
+        <wsdl:operation name="createEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/createEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -199,8 +199,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="updateEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/updateEmployees"/>
+        <wsdl:operation name="updateEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/updateEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -208,8 +208,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="deleteEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/deleteEmployees"/>
+        <wsdl:operation name="deleteEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/deleteEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -217,8 +217,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="mergeEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeEmployees"/>
+        <wsdl:operation name="mergeEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -226,8 +226,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="findEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/findEmployees"/>
+        <wsdl:operation name="findEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/findEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -235,8 +235,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="processEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processEmployees"/>
+        <wsdl:operation name="processEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -244,8 +244,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="processCSEmployees">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processCSEmployees"/>
+        <wsdl:operation name="processCSEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processCSEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -254,8 +254,8 @@
             </wsdl:output>
         </wsdl:operation>
         <!-- END SDO Bindings -->
-        <wsdl:operation name="getDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/getDepartments"/>
+        <wsdl:operation name="getDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/getDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -263,8 +263,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="createDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/createDepartments"/>
+        <wsdl:operation name="createDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/createDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -272,8 +272,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="updateDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/updateDepartments"/>
+        <wsdl:operation name="updateDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/updateDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -281,8 +281,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="deleteDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/deleteDepartments"/>
+        <wsdl:operation name="deleteDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/deleteDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -290,8 +290,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="mergeDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeDepartments"/>
+        <wsdl:operation name="mergeDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -299,8 +299,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="findDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/findDepartments"/>
+        <wsdl:operation name="findDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/findDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -308,8 +308,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="processDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processDepartments"/>
+        <wsdl:operation name="processDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -317,8 +317,8 @@
                 <soap:body use="literal"/>
             </wsdl:output>
         </wsdl:operation>
-        <wsdl:operation name="processCSDepartments">
-            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processCSDepartments"/>
+        <wsdl:operation name="processCSDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/processCSDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>

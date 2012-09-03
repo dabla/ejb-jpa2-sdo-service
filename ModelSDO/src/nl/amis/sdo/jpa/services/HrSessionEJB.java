@@ -39,171 +39,171 @@ import weblogic.nodemanager.util.ProcessControl;
 public interface HrSessionEJB {
     Object queryByRange(String jpqlStmt, int firstResult, int maxResults);
     
-  @WebMethod(action="/nl.amis.sdo.jpa.services/getDepartments",
-      operationName="getDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/getDepartmentsSDO",
+      operationName="getDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="getDepartments")
+      localName="getDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="getDepartmentsResponse")
+      localName="getDepartmentsSDOResponse")
   @WebResult(name="result")
-  DepartmentsSDO getDepartments(@WebParam(mode = WebParam.Mode.IN, name="employeeId")
-      Long employeeId) throws RuntimeException;
+  public DepartmentsSDO getDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="employeeId")
+      Long employeeId);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/createDepartments",
-      operationName="createDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/createDepartmentsSDO",
+      operationName="createDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="createDepartments")
+      localName="createDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="createDepartmentsResponse")
+      localName="createDepartmentsSDOResponse")
   @WebResult(name="result")
-  DepartmentsSDO createDepartments(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments) throws RuntimeException;
+  public DepartmentsSDO createDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
+      DepartmentsSDO departments);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/updateDepartments",
-      operationName="updateDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/updateDepartmentsSDO",
+      operationName="updateDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="updateDepartments")
+      localName="updateDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="updateDepartmentsResponse")
+      localName="updateDepartmentsSDOResponse")
   @WebResult(name="result")
-  DepartmentsSDO updateDepartments(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments) throws RuntimeException;
+  public DepartmentsSDO updateDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
+      DepartmentsSDO departments);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/deleteDepartments",
-      operationName="deleteDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/deleteDepartmentsSDO",
+      operationName="deleteDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="deleteDepartments")
+      localName="deleteDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="deleteDepartmentsResponse")
-  void deleteDepartments(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments) throws RuntimeException;
+      localName="deleteDepartmentsSDOResponse")
+  public void deleteDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
+      DepartmentsSDO departments);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/mergeDepartments",
-      operationName="mergeDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/mergeDepartmentsSDO",
+      operationName="mergeDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="mergeDepartments")
+      localName="mergeDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="mergeDepartmentsResponse")
+      localName="mergeDepartmentsSDOResponse")
   @WebResult(name="result")
-  DepartmentsSDO mergeDepartments(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments) throws RuntimeException;
+  public DepartmentsSDO mergeDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
+      DepartmentsSDO departments);
     
-  @WebMethod(action="/nl.amis.sdo.jpa.services/findDepartments",
-      operationName="findDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/findDepartmentsSDO",
+      operationName="findDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="findDepartments")
+      localName="findDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="findDepartmentsResponse")
+      localName="findDepartmentsSDOResponse")
   @WebResult(name="result")
-  List<DepartmentsSDO> findDepartments(@WebParam(mode = WebParam.Mode.IN,
+  public List<DepartmentsSDO> findDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN,
           name="findCriteria")
       FindCriteria findCriteria, @WebParam(mode = WebParam.Mode.IN, name="findControl")
-      FindControl findControl) throws RuntimeException;
+      FindControl findControl);
   
-  @WebMethod(action="/nl.amis.sdo.jpa.services/processDepartments",
-      operationName="processDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/processDepartmentsSDO",
+      operationName="processDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processDepartments")
+      localName="processDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processDepartmentsResponse")
+      localName="processDepartmentsSDOResponse")
   @WebResult(name="result")
-  List<DepartmentsSDO> processDepartments(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
+  public List<DepartmentsSDO> processDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
       String changeOperation, @WebParam(mode = WebParam.Mode.IN, name="departments")
       List<DepartmentsSDO> departments, @WebParam(mode = WebParam.Mode.IN, name="processControl")
       oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/processCSDepartments",
-      operationName="processCSDepartments")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/processCSDepartmentsSDO",
+      operationName="processCSDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processCSDepartments")
+      localName="processCSDepartmentsSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processCSDepartmentsResponse")
+      localName="processCSDepartmentsSDOResponse")
   @WebResult(name="result")
-  ProcessData processCSDepartments(@WebParam(mode = WebParam.Mode.IN, name="processData")
+  public ProcessData processCSDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="processData")
       ProcessData processData, @WebParam(mode = WebParam.Mode.IN, name="processControl")
       oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/getEmployees",
-      operationName="getEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/getEmployeesSDO",
+      operationName="getEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="getEmployees")
+      localName="getEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="getEmployeesResponse")
+      localName="getEmployeesSDOResponse")
   @WebResult(name="result")
-  EmployeesSDO getEmployees(@WebParam(mode = WebParam.Mode.IN, name="employeeId")
-      Long employeeId) throws RuntimeException;
+  public EmployeesSDO getEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employeeId")
+      Long employeeId);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/createEmployees",
-      operationName="createEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/createEmployeesSDO",
+      operationName="createEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="createEmployees")
+      localName="createEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="createEmployeesResponse")
+      localName="createEmployeesSDOResponse")
   @WebResult(name="result")
-  EmployeesSDO createEmployees(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees) throws RuntimeException;
+  public EmployeesSDO createEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
+      EmployeesSDO employees);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/updateEmployees",
-      operationName="updateEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/updateEmployeesSDO",
+      operationName="updateEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="updateEmployees")
+      localName="updateEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="updateEmployeesResponse")
+      localName="updateEmployeesSDOResponse")
   @WebResult(name="result")
-  EmployeesSDO updateEmployees(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees) throws RuntimeException;
+  public EmployeesSDO updateEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
+      EmployeesSDO employees);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/deleteEmployees",
-      operationName="deleteEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/deleteEmployeesSDO",
+      operationName="deleteEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="deleteEmployees")
+      localName="deleteEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="deleteEmployeesResponse")
-  void deleteEmployees(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees) throws RuntimeException;
+      localName="deleteEmployeesSDOResponse")
+  public void deleteEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
+      EmployeesSDO employees);
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/mergeEmployees",
-      operationName="mergeEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/mergeEmployeesSDO",
+      operationName="mergeEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="mergeEmployees")
+      localName="mergeEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="mergeEmployeesResponse")
+      localName="mergeEmployeesSDOResponse")
   @WebResult(name="result")
-  EmployeesSDO mergeEmployees(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees) throws RuntimeException;
+  public EmployeesSDO mergeEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
+      EmployeesSDO employees);
     
-  @WebMethod(action="/nl.amis.sdo.jpa.services/findEmployees",
-      operationName="findEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/findEmployeesSDO",
+      operationName="findEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="findEmployees")
+      localName="findEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="findEmployeesResponse")
+      localName="findEmployeesSDOResponse")
   @WebResult(name="result")
-  List<EmployeesSDO> findEmployees(@WebParam(mode = WebParam.Mode.IN,
+  public List<EmployeesSDO> findEmployeesSDO(@WebParam(mode = WebParam.Mode.IN,
           name="findCriteria")
       FindCriteria findCriteria, @WebParam(mode = WebParam.Mode.IN, name="findControl")
-      FindControl findControl) throws RuntimeException;
+      FindControl findControl);
   
-  @WebMethod(action="/nl.amis.sdo.jpa.services/processEmployees",
-      operationName="processEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/processEmployeesSDO",
+      operationName="processEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processEmployees")
+      localName="processEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processEmployeesResponse")
+      localName="processEmployeesSDOResponse")
   @WebResult(name="result")
-  List<EmployeesSDO> processEmployees(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
+  public List<EmployeesSDO> processEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
       String changeOperation, @WebParam(mode = WebParam.Mode.IN, name="employees")
       List<EmployeesSDO> employees, @WebParam(mode = WebParam.Mode.IN, name="processControl")
       oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
 
-  @WebMethod(action="/nl.amis.sdo.jpa.services/processCSEmployees",
-      operationName="processCSEmployees")
+  @WebMethod(action="/nl.amis.sdo.jpa.services/processCSEmployeesSDO",
+      operationName="processCSEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processCSEmployees")
+      localName="processCSEmployeesSDO")
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
-      localName="processCSEmployeesResponse")
+      localName="processCSEmployeesSDOResponse")
   @WebResult(name="result")
-  ProcessData processCSEmployees(@WebParam(mode = WebParam.Mode.IN, name="processData")
+  public ProcessData processCSEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="processData")
       ProcessData processData, @WebParam(mode = WebParam.Mode.IN, name="processControl")
       oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
 }

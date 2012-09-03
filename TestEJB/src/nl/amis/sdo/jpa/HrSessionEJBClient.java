@@ -17,10 +17,10 @@ public class HrSessionEJBClient {
         try {
             final Context context = getInitialContext();
             HrSessionEJB hrSessionEJB = (HrSessionEJB)context.lookup("EjbSdoService-HrSessionEJB#nl.amis.sdo.jpa.services.HrSessionEJB");
-            for (Departments departments : (List<Departments>)hrSessionEJB.getDepartmentsFindAll()) {
+            /*for (Departments departments : (List<Departments>)hrSessionEJB.findDepartmentsSDO(null,null)) {
                 printDepartments(departments);
-            }
-            for (Departments departments : (List<Departments>)hrSessionEJB.getDepartmentsFindOne(10L )) {
+            }*/
+            for (Departments departments : (List<Departments>)hrSessionEJB.getDepartmentsSDO(Long.valueOf(10))) {
                 printDepartments(departments);
             }
 
