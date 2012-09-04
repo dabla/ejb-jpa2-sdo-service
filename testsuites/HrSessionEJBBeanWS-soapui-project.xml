@@ -1247,7 +1247,7 @@
    <soapenv:Body>
       <nl:createEmployeesSDO>
          <nl:employees>
-            <email>david.blain@b-holding.be</email>
+            <email>dablomatique@gmail.com</email>
             <firstName>David</firstName>
             <hireDate>2000-08-01T08:00:00.0Z</hireDate>
             <jobId>IT_PROG</jobId>
@@ -1327,100 +1327,26 @@
          </nl:employees>
       </nl:deleteEmployeesSDO>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/deleteEmployeesSDO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="/nl.amis.sdo.jpa.services/findDepartmentsSDO" name="findDepartmentsSDO" bindingOperationName="findDepartmentsSDO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/deleteEmployeesSDO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="/nl.amis.sdo.jpa.services/findDepartmentsSDO" name="findDepartmentsSDO" bindingOperationName="findDepartmentsSDO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
    <soapenv:Header/>
    <soapenv:Body>
       <nl:findDepartmentsSDO>
          <nl:findCriteria>
             <typ:fetchStart>0</typ:fetchStart>
             <typ:fetchSize>-1</typ:fetchSize>
-            <!--Optional:-->
-            <typ:filter>
-               <!--Optional:-->
-               <typ:conjunction>?</typ:conjunction>
-               <!--1 or more repetitions:-->
-               <typ:group>
-                  <!--Optional:-->
-                  <typ:conjunction>?</typ:conjunction>
-                  <typ:upperCaseCompare>false</typ:upperCaseCompare>
-                  <!--1 or more repetitions:-->
-                  <typ:item>
-                     <!--Optional:-->
-                     <typ:conjunction>?</typ:conjunction>
-                     <typ:upperCaseCompare>false</typ:upperCaseCompare>
-                     <typ:attribute>?</typ:attribute>
-                     <typ:operator>?</typ:operator>
-                     <!--You have a CHOICE of the next 2 items at this level-->
-                     <!--Zero or more repetitions:-->
-                     <typ:value>?</typ:value>
-                     <typ:nested/>
-                  </typ:item>
-               </typ:group>
-               <!--Zero or more repetitions:-->
-               <typ:nested/>
-            </typ:filter>
-            <!--Optional:-->
             <typ:sortOrder>
-               <!--1 or more repetitions:-->
                <typ:sortAttribute>
-                  <typ:name>?</typ:name>
-                  <typ:descending>false</typ:descending>
+                  <typ:name>departmentName</typ:name>
+                  <typ:descending>true</typ:descending>
                </typ:sortAttribute>
             </typ:sortOrder>
-            <!--Zero or more repetitions:-->
-            <typ:findAttribute>?</typ:findAttribute>
-            <typ:excludeAttribute>false</typ:excludeAttribute>
-            <!--Zero or more repetitions:-->
-            <typ:childFindCriteria>
-               <typ:fetchStart>0</typ:fetchStart>
-               <typ:fetchSize>-1</typ:fetchSize>
-               <!--Optional:-->
-               <typ:filter>
-                  <!--Optional:-->
-                  <typ:conjunction>?</typ:conjunction>
-                  <!--1 or more repetitions:-->
-                  <typ:group>
-                     <!--Optional:-->
-                     <typ:conjunction>?</typ:conjunction>
-                     <typ:upperCaseCompare>false</typ:upperCaseCompare>
-                     <!--1 or more repetitions:-->
-                     <typ:item>
-                        <!--Optional:-->
-                        <typ:conjunction>?</typ:conjunction>
-                        <typ:upperCaseCompare>false</typ:upperCaseCompare>
-                        <typ:attribute>?</typ:attribute>
-                        <typ:operator>?</typ:operator>
-                        <!--You have a CHOICE of the next 2 items at this level-->
-                        <!--Zero or more repetitions:-->
-                        <typ:value>?</typ:value>
-                        <typ:nested/>
-                     </typ:item>
-                  </typ:group>
-                  <!--Zero or more repetitions:-->
-                  <typ:nested/>
-               </typ:filter>
-               <!--Optional:-->
-               <typ:sortOrder>
-                  <!--1 or more repetitions:-->
-                  <typ:sortAttribute>
-                     <typ:name>?</typ:name>
-                     <typ:descending>false</typ:descending>
-                  </typ:sortAttribute>
-               </typ:sortOrder>
-               <!--Zero or more repetitions:-->
-               <typ:findAttribute>?</typ:findAttribute>
-               <typ:excludeAttribute>false</typ:excludeAttribute>
-               <!--Zero or more repetitions:-->
-               <typ:childFindCriteria/>
-               <typ:childAttrName>?</typ:childAttrName>
-            </typ:childFindCriteria>
          </nl:findCriteria>
          <nl:findControl>
             <typ:retrieveAllTranslations>false</typ:retrieveAllTranslations>
          </nl:findControl>
       </nl:findDepartmentsSDO>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/findDepartmentsSDO"/></con:call></con:operation><con:operation isOneWay="false" action="/nl.amis.sdo.jpa.services/findEmployeesSDO" name="findEmployeesSDO" bindingOperationName="findEmployeesSDO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/findDepartmentsSDO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="/nl.amis.sdo.jpa.services/findEmployeesSDO" name="findEmployeesSDO" bindingOperationName="findEmployeesSDO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
    <soapenv:Header/>
    <soapenv:Body>
       <nl:findEmployeesSDO>
@@ -1855,4 +1781,64 @@
          </nl:employees>
       </nl:updateEmployeesSDO>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/updateEmployeesSDO"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/updateEmployeesSDO"/></con:call></con:operation></con:interface><con:testSuite name="HrSessionEJBBeanWSSoapHttp TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="EmployeesSDO TestCase" searchProperties="true" id="feeaa5dd-6fa6-4649-ac0f-1c327c2b7087"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>employeeId</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="createEmployeesSDO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HrSessionEJBBeanWSSoapHttp</con:interface><con:operation>createEmployeesSDO</con:operation><con:request name="createEmployeesSDO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nl:createEmployeesSDO>
+         <nl:employees>
+            <email>dablomatique@gmail.com</email>
+            <firstName>David</firstName>
+            <hireDate>2000-08-01T08:00:00.0Z</hireDate>
+            <jobId>IT_PROG</jobId>
+            <lastName>Blain</lastName>
+            <managerId>103</managerId>
+            <phoneNumber>590.423.4569</phoneNumber>
+            <salary>10000.0</salary>
+         </nl:employees>
+      </nl:createEmployeesSDO>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="/nl.amis.sdo.jpa.services/createEmployeesSDO" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="transfer" name="Property Transfer"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" useXQuery="false" entitize="false" transferChildNodes="false"><con:name>employeeId</con:name><con:sourceType>Request</con:sourceType><con:sourceStep>createEmployeesSDO</con:sourceStep><con:sourcePath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns0='/nl.amis.sdo.jpa.services/';
+declare namespace ns1='/nl.amis.sdo.jpa.entities/';
+//ns0:createEmployeesSDOResponse/ns0:result/ns1:employeeId</con:sourcePath><con:targetType>employeeId</con:targetType><con:targetStep>Properties</con:targetStep></con:transfers></con:config></con:testStep><con:testStep type="request" name="getEmployeesSDO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HrSessionEJBBeanWSSoapHttp</con:interface><con:operation>getEmployeesSDO</con:operation><con:request name="getEmployeesSDO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nl:getEmployeesSDO>
+         <nl:employeeId>${employeeId}</nl:employeeId>
+      </nl:getEmployeesSDO>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="findEmployeesSDO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HrSessionEJBBeanWSSoapHttp</con:interface><con:operation>findEmployeesSDO</con:operation><con:request name="findEmployeesSDO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nl:findEmployeesSDO>
+         <nl:findCriteria>
+            <typ:fetchStart>0</typ:fetchStart>
+            <typ:fetchSize>1</typ:fetchSize>
+            <typ:filter>
+               <typ:group>
+                  <typ:upperCaseCompare>true</typ:upperCaseCompare>
+                  <typ:item>
+                     <typ:conjunction>And</typ:conjunction>
+                     <typ:upperCaseCompare>true</typ:upperCaseCompare>
+                     <typ:attribute>employeeId</typ:attribute>
+                     <typ:operator>=</typ:operator>
+                     <typ:value>${employeeId}</typ:value>
+                  </typ:item>
+               </typ:group>
+            </typ:filter>
+         </nl:findCriteria>
+         <nl:findControl>
+            <typ:retrieveAllTranslations>false</typ:retrieveAllTranslations>
+         </nl:findControl>
+      </nl:findEmployeesSDO>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="deleteEmployeesSDO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HrSessionEJBBeanWSSoapHttp</con:interface><con:operation>deleteEmployeesSDO</con:operation><con:request name="deleteEmployeesSDO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nl:deleteEmployeesSDO>
+         <nl:employees>
+            <employeeId>${employeeId}</employeeId>
+         </nl:employees>
+      </nl:deleteEmployeesSDO>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>
