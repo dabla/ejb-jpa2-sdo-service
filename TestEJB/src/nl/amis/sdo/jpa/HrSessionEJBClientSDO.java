@@ -12,6 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import nl.amis.sdo.jpa.entities.DepartmentsSDO;
+import nl.amis.sdo.jpa.entities.EmployeesSDO;
 import nl.amis.sdo.jpa.services.HrSessionEJB;
 
 import oracle.jbo.common.service.types.FindControl;
@@ -63,6 +64,11 @@ public class HrSessionEJBClientSDO {
                  (List<DepartmentsSDO>)hrSessionEJB.findDepartmentsSDO(findCriteria,findControl)) {
                 printDepartments(departments);
             }
+          
+          for (EmployeesSDO employees :
+               (List<EmployeesSDO>)hrSessionEJB.findEmployeesSDO(findCriteria,findControl)) {
+              System.out.println("employees: " + employees);
+          }
 
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -20,13 +20,15 @@
                 value="org.eclipse.persistence.logging.DefaultSessionLog"/>
     </properties>
   </persistence-unit>
-  <persistence-unit name="ModelSDO" transaction-type="JTA">
+  <persistence-unit name="ModelSDO">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <jta-data-source>jdbc/hrDS</jta-data-source>
+    <jta-data-source>java:/app/jdbc/jdbc/hrDS</jta-data-source>
     <class>nl.amis.sdo.jpa.entities.Departments</class>
     <class>nl.amis.sdo.jpa.entities.Employees</class>
     <properties>
       <property name="eclipselink.target-server" value="WebLogic_10"/>
+      <property name="javax.persistence.jtaDataSource"
+                value="jdbc/hrDS"/>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.logging.logger"
                 value="org.eclipse.persistence.logging.DefaultSessionLog"/>

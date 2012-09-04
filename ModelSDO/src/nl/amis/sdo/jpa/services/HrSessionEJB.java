@@ -12,7 +12,6 @@ import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.soap.SOAPBinding;
 
-import javax.xml.rpc.ServiceException;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -22,13 +21,13 @@ import nl.amis.sdo.jpa.entities.Employees;
 import nl.amis.sdo.jpa.entities.EmployeesSDO;
 
 import oracle.jbo.common.service.types.FindControl;
+import oracle.jbo.common.service.types.FindCriteria;
+import oracle.jbo.common.service.types.ProcessControl;
 import oracle.jbo.common.service.types.ProcessData;
-import oracle.jbo.common.types.FindCriteria;
+import oracle.jbo.service.errors.ServiceException;
 
 import oracle.webservices.annotations.PortableWebService;
 import oracle.webservices.annotations.SDODatabinding;
-
-import weblogic.nodemanager.util.ProcessControl;
 
 
 @Remote
@@ -47,7 +46,7 @@ public interface HrSessionEJB {
       localName="getDepartmentsSDOResponse")
   @WebResult(name="result")
   public DepartmentsSDO getDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="employeeId")
-      Long employeeId);
+      Long employeeId) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/createDepartmentsSDO",
       operationName="createDepartmentsSDO")
@@ -57,7 +56,7 @@ public interface HrSessionEJB {
       localName="createDepartmentsSDOResponse")
   @WebResult(name="result")
   public DepartmentsSDO createDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments);
+      DepartmentsSDO departments) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/updateDepartmentsSDO",
       operationName="updateDepartmentsSDO")
@@ -67,7 +66,7 @@ public interface HrSessionEJB {
       localName="updateDepartmentsSDOResponse")
   @WebResult(name="result")
   public DepartmentsSDO updateDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments);
+      DepartmentsSDO departments) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/deleteDepartmentsSDO",
       operationName="deleteDepartmentsSDO")
@@ -76,7 +75,7 @@ public interface HrSessionEJB {
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
       localName="deleteDepartmentsSDOResponse")
   public void deleteDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments);
+      DepartmentsSDO departments) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/mergeDepartmentsSDO",
       operationName="mergeDepartmentsSDO")
@@ -86,7 +85,7 @@ public interface HrSessionEJB {
       localName="mergeDepartmentsSDOResponse")
   @WebResult(name="result")
   public DepartmentsSDO mergeDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
-      DepartmentsSDO departments);
+      DepartmentsSDO departments) throws ServiceException;
     
   @WebMethod(action="/nl.amis.sdo.jpa.services/findDepartmentsSDO",
       operationName="findDepartmentsSDO")
@@ -98,7 +97,7 @@ public interface HrSessionEJB {
   public List<DepartmentsSDO> findDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN,
           name="findCriteria")
       FindCriteria findCriteria, @WebParam(mode = WebParam.Mode.IN, name="findControl")
-      FindControl findControl);
+      FindControl findControl) throws ServiceException;
   
   @WebMethod(action="/nl.amis.sdo.jpa.services/processDepartmentsSDO",
       operationName="processDepartmentsSDO")
@@ -110,7 +109,7 @@ public interface HrSessionEJB {
   public List<DepartmentsSDO> processDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
       String changeOperation, @WebParam(mode = WebParam.Mode.IN, name="departments")
       List<DepartmentsSDO> departments, @WebParam(mode = WebParam.Mode.IN, name="processControl")
-      oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
+      ProcessControl processControl) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/processCSDepartmentsSDO",
       operationName="processCSDepartmentsSDO")
@@ -121,7 +120,7 @@ public interface HrSessionEJB {
   @WebResult(name="result")
   public ProcessData processCSDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="processData")
       ProcessData processData, @WebParam(mode = WebParam.Mode.IN, name="processControl")
-      oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
+      ProcessControl processControl) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/getEmployeesSDO",
       operationName="getEmployeesSDO")
@@ -131,7 +130,7 @@ public interface HrSessionEJB {
       localName="getEmployeesSDOResponse")
   @WebResult(name="result")
   public EmployeesSDO getEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employeeId")
-      Long employeeId);
+      Long employeeId) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/createEmployeesSDO",
       operationName="createEmployeesSDO")
@@ -141,7 +140,7 @@ public interface HrSessionEJB {
       localName="createEmployeesSDOResponse")
   @WebResult(name="result")
   public EmployeesSDO createEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees);
+      EmployeesSDO employees) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/updateEmployeesSDO",
       operationName="updateEmployeesSDO")
@@ -151,7 +150,7 @@ public interface HrSessionEJB {
       localName="updateEmployeesSDOResponse")
   @WebResult(name="result")
   public EmployeesSDO updateEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees);
+      EmployeesSDO employees) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/deleteEmployeesSDO",
       operationName="deleteEmployeesSDO")
@@ -160,7 +159,7 @@ public interface HrSessionEJB {
   @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
       localName="deleteEmployeesSDOResponse")
   public void deleteEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees);
+      EmployeesSDO employees) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/mergeEmployeesSDO",
       operationName="mergeEmployeesSDO")
@@ -170,7 +169,7 @@ public interface HrSessionEJB {
       localName="mergeEmployeesSDOResponse")
   @WebResult(name="result")
   public EmployeesSDO mergeEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
-      EmployeesSDO employees);
+      EmployeesSDO employees) throws ServiceException;
     
   @WebMethod(action="/nl.amis.sdo.jpa.services/findEmployeesSDO",
       operationName="findEmployeesSDO")
@@ -182,7 +181,7 @@ public interface HrSessionEJB {
   public List<EmployeesSDO> findEmployeesSDO(@WebParam(mode = WebParam.Mode.IN,
           name="findCriteria")
       FindCriteria findCriteria, @WebParam(mode = WebParam.Mode.IN, name="findControl")
-      FindControl findControl);
+      FindControl findControl) throws ServiceException;
   
   @WebMethod(action="/nl.amis.sdo.jpa.services/processEmployeesSDO",
       operationName="processEmployeesSDO")
@@ -194,7 +193,7 @@ public interface HrSessionEJB {
   public List<EmployeesSDO> processEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
       String changeOperation, @WebParam(mode = WebParam.Mode.IN, name="employees")
       List<EmployeesSDO> employees, @WebParam(mode = WebParam.Mode.IN, name="processControl")
-      oracle.jbo.common.service.types.ProcessControl processControl);
+      ProcessControl processControl) throws ServiceException;
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/processCSEmployeesSDO",
       operationName="processCSEmployeesSDO")
@@ -205,5 +204,5 @@ public interface HrSessionEJB {
   @WebResult(name="result")
   public ProcessData processCSEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="processData")
       ProcessData processData, @WebParam(mode = WebParam.Mode.IN, name="processControl")
-      oracle.jbo.common.service.types.ProcessControl processControl);
+      ProcessControl processControl) throws ServiceException;
 }

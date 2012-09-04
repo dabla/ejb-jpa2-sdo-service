@@ -9,6 +9,6 @@
         <initial-beans-in-free-pool>2</initial-beans-in-free-pool>
       </pool>
     </stateless-session-descriptor>
-    <enable-call-by-reference>true</enable-call-by-reference>
+    <!--enable-call-by-reference>true</enable-call-by-reference-->
   </weblogic-enterprise-bean>
 </weblogic-ejb-jar>

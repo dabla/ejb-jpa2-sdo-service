@@ -12,6 +12,7 @@ import java.util.List;
 
 import java.util.logging.Level;
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 
@@ -36,8 +37,6 @@ import javax.persistence.criteria.CriteriaQuery;
 
 import javax.persistence.criteria.Root;
 
-import javax.xml.rpc.ServiceException;
-
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -46,15 +45,16 @@ import nl.amis.sdo.jpa.entities.DepartmentsSDO;
 import nl.amis.sdo.jpa.entities.Employees;
 import nl.amis.sdo.jpa.entities.EmployeesSDO;
 
-import oracle.jbo.common.sdo.SDOHelper;
 import oracle.jbo.common.service.types.FindControl;
+import oracle.jbo.common.service.types.FindCriteria;
 import oracle.jbo.common.service.types.ProcessControl;
 import oracle.jbo.common.service.types.ProcessData;
-import oracle.jbo.common.types.FindCriteria;
+import oracle.jbo.service.errors.ServiceException;
 
 import oracle.webservices.annotations.PortableWebService;
 
 @Stateless(name = "HrSessionEJB", mappedName = "EjbSdoService-HrSessionEJB")
+@Remote(HrSessionEJB.class)
 @PortableWebService(serviceName = "HrSessionEJBBeanWS",
                     targetNamespace = "/nl.amis.sdo.jpa.services/",
                     portName = "HrSessionEJBBeanWSSoapHttpPort",
@@ -105,79 +105,79 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
     }
   }
 
-  public DepartmentsSDO getDepartmentsSDO(Long employeeId) {
+  public DepartmentsSDO getDepartmentsSDO(Long employeeId) throws ServiceException {
     return (DepartmentsSDO)get(Departments.class, employeeId);
   }
 
-  public DepartmentsSDO createDepartmentsSDO(DepartmentsSDO departments) {
+  public DepartmentsSDO createDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
     return create(departments);
   }
 
-  public DepartmentsSDO updateDepartmentsSDO(DepartmentsSDO departments) {
+  public DepartmentsSDO updateDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
     return merge(Departments.class, departments);
   }
 
-  public void deleteDepartmentsSDO(DepartmentsSDO departments) {
+  public void deleteDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
     delete(Departments.class, departments);
   }
 
-  public DepartmentsSDO mergeDepartmentsSDO(DepartmentsSDO departments) {
+  public DepartmentsSDO mergeDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
     return merge(Departments.class, departments);
   }
 
   public List<DepartmentsSDO> findDepartmentsSDO(FindCriteria findCriteria,
-                                              FindControl findControl) {
+                                              FindControl findControl) throws ServiceException {
     return find(Departments.class, findCriteria, findControl);
   }
 
   public List<DepartmentsSDO> processDepartmentsSDO(String changeOperation,
                                                  List<DepartmentsSDO> departments,
-                                                 ProcessControl processControl) {
+                                                 ProcessControl processControl) throws ServiceException {
     return process(Departments.class, changeOperation, departments);
   }
 
   public ProcessData processCSDepartmentsSDO(ProcessData processData,
-                                          ProcessControl processControl) {
+                                          ProcessControl processControl) throws ServiceException {
     return process(Departments.class, processData);
   }
 
-  public EmployeesSDO getEmployeesSDO(Long employeeId) {
+  public EmployeesSDO getEmployeesSDO(Long employeeId) throws ServiceException {
     System.out.println("getEmployees: " + employeeId);
     return (EmployeesSDO)get(Employees.class, employeeId);
   }
 
-  public EmployeesSDO createEmployeesSDO(EmployeesSDO employees) {
+  public EmployeesSDO createEmployeesSDO(EmployeesSDO employees) throws ServiceException {
     System.out.println("createEmployees: " + employees);
     return create(employees);
   }
 
-  public EmployeesSDO updateEmployeesSDO(EmployeesSDO employees) {
+  public EmployeesSDO updateEmployeesSDO(EmployeesSDO employees) throws ServiceException {
     System.out.println("updateEmployees: " + employees);
     return merge(Employees.class, employees);
   }
 
-  public void deleteEmployeesSDO(EmployeesSDO employees) {
+  public void deleteEmployeesSDO(EmployeesSDO employees) throws ServiceException {
     System.out.println("deleteEmployees: " + employees);
     delete(Employees.class, employees);
   }
 
-  public EmployeesSDO mergeEmployeesSDO(EmployeesSDO employees) {
+  public EmployeesSDO mergeEmployeesSDO(EmployeesSDO employees) throws ServiceException {
     return merge(Employees.class, employees);
   }
 
   public List<EmployeesSDO> findEmployeesSDO(FindCriteria findCriteria , 
-    FindControl findControl) {
+    FindControl findControl) throws ServiceException {
     return find(Employees.class, findCriteria, findControl);
   }
 
   public List<EmployeesSDO> processEmployeesSDO(String changeOperation,
                                              List<EmployeesSDO> employees,
-                                             ProcessControl processControl) {
+                                             ProcessControl processControl) throws ServiceException {
     return process(Employees.class, changeOperation, employees);
   }
 
   public ProcessData processCSEmployeesSDO(ProcessData processData,
-                                        ProcessControl processControl) {
+                                        ProcessControl processControl) throws ServiceException {
     return process(Employees.class, processData);
   }
 }
