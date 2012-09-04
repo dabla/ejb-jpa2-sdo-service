@@ -194,7 +194,7 @@ public interface HrSessionEJB {
   public List<EmployeesSDO> processEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="changeOperation")
       String changeOperation, @WebParam(mode = WebParam.Mode.IN, name="employees")
       List<EmployeesSDO> employees, @WebParam(mode = WebParam.Mode.IN, name="processControl")
-      oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
+      oracle.jbo.common.service.types.ProcessControl processControl);
 
   @WebMethod(action="/nl.amis.sdo.jpa.services/processCSEmployeesSDO",
       operationName="processCSEmployeesSDO")
@@ -205,5 +205,5 @@ public interface HrSessionEJB {
   @WebResult(name="result")
   public ProcessData processCSEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="processData")
       ProcessData processData, @WebParam(mode = WebParam.Mode.IN, name="processControl")
-      oracle.jbo.common.service.types.ProcessControl processControl) throws oracle.jbo.service.errors.ServiceException;
+      oracle.jbo.common.service.types.ProcessControl processControl);
 }

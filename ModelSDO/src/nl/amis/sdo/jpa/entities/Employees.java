@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,16 +19,14 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
-@NamedQueries({
-  @NamedQuery(name = "Employees.findAll", query = "select o from Employees o")
-, @NamedQuery(name = "Employees.findOne", query = "select o from Employees o where o.employeeId = :empId")
-})
+@SequenceGenerator(name="EMPLOYEES_SEQ",sequenceName="EMPLOYEES_SEQ")
 public class Employees implements BaseEntity<EmployeesSDO>, Serializable {
     @SuppressWarnings("compatibility:3441819862910628280")
     private static final long serialVersionUID = 1L;
@@ -35,6 +35,7 @@ public class Employees implements BaseEntity<EmployeesSDO>, Serializable {
     @Column(nullable = false, unique = true, length = 25)
     private String email;
     @Id
+    @GeneratedValue(generator="EMPLOYEES_SEQ",strategy=GenerationType.SEQUENCE)
     @Column(name="EMPLOYEE_ID", nullable = false)
     private Long employeeId;
     @Column(name="FIRST_NAME", length = 20)

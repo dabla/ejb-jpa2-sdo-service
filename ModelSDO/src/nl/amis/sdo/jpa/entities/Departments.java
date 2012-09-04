@@ -10,22 +10,23 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 @Entity
-@NamedQueries({
-  @NamedQuery(name = "Departments.findAll", query = "select o from Departments o")
-, @NamedQuery(name = "Departments.findOne", query = "select o from Departments o where o.departmentId = :deptId")
-})
+@SequenceGenerator(name="DEPARTMENTS_SEQ",sequenceName="DEPARTMENTS_SEQ")
 public class Departments implements BaseEntity<DepartmentsSDO>, Serializable {
     @SuppressWarnings("compatibility:-6447132931414648339")
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(generator="DEPARTMENTS_SEQ",strategy=GenerationType.SEQUENCE)
     @Column(name="DEPARTMENT_ID", nullable = false)
     private Long departmentId;
 
