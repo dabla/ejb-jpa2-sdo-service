@@ -151,7 +151,7 @@ public abstract class AbstractService {
     logger.log(Level.FINEST, "findCriteria: {0}", findCriteria);
 
     if (findCriteria != null) {
-      final Order order = buildOrderBy(cb, cq, root, findCriteria);
+      final List<Order> order = buildOrderBy(cb, cq, root, findCriteria);
       
       logger.log(Level.FINEST, "order: {0}", order);
       
@@ -203,7 +203,7 @@ public abstract class AbstractService {
     return null;
   }
   
-  protected <T> Order buildOrderBy(final CriteriaBuilder cb, final CriteriaQuery<T> cq, final Root<T> root, final FindCriteria findCriteria) {
+  protected <T> List<Order> buildOrderBy(final CriteriaBuilder cb, final CriteriaQuery<T> cq, final Root<T> root, final FindCriteria findCriteria) {
     logger.log(Level.FINEST, "sortOrder: {0}", findCriteria.getSortOrder());
     
     if (findCriteria.getSortOrder() != null) {
@@ -212,17 +212,17 @@ public abstract class AbstractService {
       logger.log(Level.FINEST, "sortAttributes: {0}", sortAttributes);
 
       if (sortAttributes != null) {
+        final List<Order> orders = new ArrayList<Order>(sortAttributes.size());
+        
         for (final SortAttribute sortAttribute : sortAttributes) {
           logger.log(Level.FINEST, "sortAttribute: {0}", sortAttribute);
           logger.log(Level.FINEST, "descending: {0}", sortAttribute.getDescending());
           logger.log(Level.FINEST, "name: {0}", sortAttribute.getName());
-          
-          if (sortAttribute.getDescending()) {
-            return cb.desc(root.get(camelize(sortAttribute.getName())));
-          }
-          
-          return cb.asc(root.get(camelize(sortAttribute.getName())));
+
+          orders.add(sortAttribute.getDescending() ? cb.desc(root.get(camelize(sortAttribute.getName()))) : cb.asc(root.get(camelize(sortAttribute.getName()))));
         }
+        
+        return orders;
       }
     }
     
