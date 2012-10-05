@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project name="HrSessionEJBBeanWS" soapui-version="4.0.1" abortOnError="false" runType="SEQUENTIAL" activeEnvironment="Default" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HrSessionEJBBeanWSSoapHttp" type="wsdl" bindingName="{/nl.amis.sdo.jpa.services/}HrSessionEJBBeanWSSoapHttp" soapVersion="1_1" anonymous="optional" definition="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?wsdl"><con:part><con:url>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HrSessionEJBBeanWS" targetNamespace="/nl.amis.sdo.jpa.services/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="/nl.amis.sdo.jpa.services/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:types="/nl.amis.sdo.jpa.services/">
+<con:soapui-project name="HrSessionEJBBeanWS" soapui-version="4.0.1" abortOnError="false" runType="SEQUENTIAL" activeEnvironment="Default" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HrSessionEJBBeanWSSoapHttp" type="wsdl" bindingName="{/nl.amis.sdo.jpa.services/}HrSessionEJBBeanWSSoapHttp" soapVersion="1_1" anonymous="optional" definition="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?wsdl"><con:part><con:url>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HrSessionEJBBeanWS" targetNamespace="/nl.amis.sdo.jpa.services/" xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="/nl.amis.sdo.jpa.services/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:types="/nl.amis.sdo.jpa.services/">
   <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?WSDL=/META-INF/wsdl/ServiceException.wsdl"/>
   <wsdl:types>
     <schema xmlns="http://www.w3.org/2001/XMLSchema">
@@ -35,6 +35,12 @@
   </wsdl:message>
   <wsdl:message name="HrSessionEJBBeanWS_mergeEmployeesSDOResponse">
     <wsdl:part name="parameters" element="tns:mergeEmployeesSDOResponse"/>
+  </wsdl:message>
+  <wsdl:message name="HrSessionEJBBeanWS_countEmployeesSDO">
+    <wsdl:part name="parameters" element="tns:countEmployeesSDO"/>
+  </wsdl:message>
+  <wsdl:message name="HrSessionEJBBeanWS_countEmployeesSDOResponse">
+    <wsdl:part name="parameters" element="tns:countEmployeesSDOResponse"/>
   </wsdl:message>
   <wsdl:message name="HrSessionEJBBeanWS_findEmployeesSDO">
     <wsdl:part name="parameters" element="tns:findEmployeesSDO"/>
@@ -84,6 +90,12 @@
   <wsdl:message name="HrSessionEJBBeanWS_mergeDepartmentsSDOResponse">
     <wsdl:part name="parameters" element="tns:mergeDepartmentsSDOResponse"/>
   </wsdl:message>
+  <wsdl:message name="HrSessionEJBBeanWS_countDepartmentsSDO">
+    <wsdl:part name="parameters" element="tns:countDepartmentsSDO"/>
+  </wsdl:message>
+  <wsdl:message name="HrSessionEJBBeanWS_countDepartmentsSDOResponse">
+    <wsdl:part name="parameters" element="tns:countDepartmentsSDOResponse"/>
+  </wsdl:message>
   <wsdl:message name="HrSessionEJBBeanWS_findDepartmentsSDO">
     <wsdl:part name="parameters" element="tns:findDepartmentsSDO"/>
   </wsdl:message>
@@ -106,66 +118,92 @@
     <wsdl:operation name="getEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_getEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_getEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="createEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_createEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_createEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="updateEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_updateEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_updateEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="deleteEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_deleteEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_deleteEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="mergeEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_mergeEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_mergeEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+    </wsdl:operation>
+    <wsdl:operation name="countEmployeesSDO">
+      <wsdl:input message="tns:HrSessionEJBBeanWS_countEmployeesSDO"/>
+      <wsdl:output message="tns:HrSessionEJBBeanWS_countEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="findEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_findEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_findEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="processEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_processEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_processEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="processCSEmployeesSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_processCSEmployeesSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_processCSEmployeesSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="getDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_getDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_getDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="createDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_createDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_createDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="updateDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_updateDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_updateDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="deleteDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_deleteDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_deleteDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="mergeDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_mergeDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_mergeDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+    </wsdl:operation>
+    <wsdl:operation name="countDepartmentsSDO">
+      <wsdl:input message="tns:HrSessionEJBBeanWS_countDepartmentsSDO"/>
+      <wsdl:output message="tns:HrSessionEJBBeanWS_countDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="findDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_findDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_findDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="processDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_processDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_processDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
     <wsdl:operation name="processCSDepartmentsSDO">
       <wsdl:input message="tns:HrSessionEJBBeanWS_processCSDepartmentsSDO"/>
       <wsdl:output message="tns:HrSessionEJBBeanWS_processCSDepartmentsSDOResponse"/>
+      <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="HrSessionEJBBeanWSSoapHttp" type="tns:HrSessionEJBBeanWS">
@@ -178,6 +216,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="createEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/createEmployeesSDO"/>
@@ -187,6 +228,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="updateEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/updateEmployeesSDO"/>
@@ -196,6 +240,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="deleteEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/deleteEmployeesSDO"/>
@@ -205,6 +252,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="mergeEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeEmployeesSDO"/>
@@ -214,6 +264,21 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countEmployeesSDO">
+      <soap:operation soapAction="/nl.amis.sdo.jpa.services/countEmployeesSDO"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="findEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/findEmployeesSDO"/>
@@ -223,6 +288,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="processEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/processEmployeesSDO"/>
@@ -232,6 +300,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="processCSEmployeesSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/processCSEmployeesSDO"/>
@@ -241,6 +312,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="getDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/getDepartmentsSDO"/>
@@ -250,6 +324,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="createDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/createDepartmentsSDO"/>
@@ -259,6 +336,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="updateDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/updateDepartmentsSDO"/>
@@ -268,6 +348,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="deleteDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/deleteDepartmentsSDO"/>
@@ -277,6 +360,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="mergeDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeDepartmentsSDO"/>
@@ -286,6 +372,21 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="countDepartmentsSDO">
+      <soap:operation soapAction="/nl.amis.sdo.jpa.services/countDepartmentsSDO"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="findDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/findDepartmentsSDO"/>
@@ -295,6 +396,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="processDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/processDepartmentsSDO"/>
@@ -304,6 +408,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="processCSDepartmentsSDO">
       <soap:operation soapAction="/nl.amis.sdo.jpa.services/processCSDepartmentsSDO"/>
@@ -313,6 +420,9 @@
       <wsdl:output>
         <soap:body use="literal"/>
       </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="HrSessionEJBBeanWS">
@@ -380,7 +490,7 @@
       </extension>
     </complexContent>
   </complexType>
-</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?XSD=/xml/sdoJava.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="commonj.sdo/java" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?XSD=/xml/sdoJava.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="commonj.sdo/java" xmlns:sdoJava="commonj.sdo/java" xmlns:sdo="commonj.sdo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <xsd:import namespace="commonj.sdo" schemaLocation="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?XSD=/xml/sdoModel.xsd"/>
   <xsd:attribute name="package" type="xsd:string"/>
   <xsd:attribute name="instanceClass" type="xsd:string"/>
@@ -414,22 +524,22 @@
   <xsd:simpleType name="ShortObject" sdoJava:instanceClass="java.lang.Short">
     <xsd:restriction base="xsd:short"/>
   </xsd:simpleType>
-</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?XSD=/xml/sdoModel.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="commonj.sdo" elementFormDefault="qualified" xsi:schemaLocation="commonj.sdo/xml sdoXML.xsd                   commonj.sdo/java sdoJava.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdo="commonj.sdo" xmlns:sdoXML="commonj.sdo/xml" xmlns:sdoJava="commonj.sdo/java">
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?XSD=/xml/sdoModel.xsd</con:url><con:content><![CDATA[<xsd:schema elementFormDefault="qualified" targetNamespace="commonj.sdo" xsi:schemaLocation="commonj.sdo/xml sdoXML.xsd                   commonj.sdo/java sdoJava.xsd" xmlns:sdo="commonj.sdo" xmlns:sdoJava="commonj.sdo/java" xmlns:sdoXML="commonj.sdo/xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <xsd:include schemaLocation="http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS?XSD=/xml/datagraph.xsd"/>
   <xsd:element name="types" type="sdo:Types"/>
   <xsd:complexType name="Types">
     <xsd:sequence>
-      <xsd:element name="type" type="sdo:Type" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="type" type="sdo:Type"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:element name="dataObject" type="xsd:anyType"/>
   <xsd:element name="type" type="sdo:Type"/>
   <xsd:complexType name="Type">
     <xsd:sequence>
-      <xsd:element name="baseType" type="sdo:URI" minOccurs="0" maxOccurs="unbounded" sdoXML:propertyType="sdo:Type"/>
-      <xsd:element name="property" type="sdo:Property" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:element name="aliasName" type="sdo:String" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="baseType" type="sdo:URI" sdoXML:propertyType="sdo:Type"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="property" type="sdo:Property"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aliasName" type="sdo:String"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
     </xsd:sequence>
     <xsd:attribute name="name" type="xsd:ID" sdoXML:dataType="sdo:String"/>
     <xsd:attribute name="uri" type="sdo:URI"/>
@@ -441,8 +551,8 @@
   </xsd:complexType>
   <xsd:complexType name="Property">
     <xsd:sequence>
-      <xsd:element name="aliasName" type="sdo:String" minOccurs="0" maxOccurs="unbounded"/>
-      <xsd:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="aliasName" type="sdo:String"/>
+      <xsd:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
     </xsd:sequence>
     <xsd:attribute name="name" type="sdo:String"/>
     <xsd:attribute name="many" type="sdo:Boolean"/>
@@ -454,10 +564,10 @@
     <xsd:attribute name="nullable" type="sdo:Boolean"/>
     <xsd:anyAttribute namespace="##any" processContents="lax"/>
   </xsd:complexType>
-  <xsd:complexType name="DataObject" abstract="true"/>
-  <xsd:complexType name="TextType" abstract="true">
+  <xsd:complexType abstract="true" name="DataObject"/>
+  <xsd:complexType abstract="true" name="TextType">
     <xsd:sequence>
-      <xsd:element name="text" minOccurs="0" maxOccurs="unbounded" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="text" type="xsd:string"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="Boolean" sdoJava:instanceClass="boolean">
@@ -653,6 +763,21 @@
       </sequence>
     </complexType>
   </element>
+  <element name="countEmployeesSDO">
+    <complexType>
+      <sequence>
+        <element name="findCriteria" type="ns3:FindCriteria"/>
+        <element name="findControl" type="ns3:FindControl"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="countEmployeesSDOResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="long" minOccurs="1" maxOccurs="1"/>
+      </sequence>
+    </complexType>
+  </element>
   <element name="findEmployeesSDO">
     <complexType>
       <sequence>
@@ -764,6 +889,21 @@
     <complexType>
       <sequence>
         <element name="result" type="ns0:DepartmentsSDO"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="countDepartmentsSDO">
+    <complexType>
+      <sequence>
+        <element name="findCriteria" type="ns3:FindCriteria"/>
+        <element name="findControl" type="ns3:FindControl"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="countDepartmentsSDOResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="long" minOccurs="1" maxOccurs="1"/>
       </sequence>
     </complexType>
   </element>
@@ -1785,7 +1925,33 @@
          </nl:employees>
       </nl:updateEmployeesSDO>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/updateEmployeesSDO"/></con:call></con:operation></con:interface><con:testSuite name="HrSessionEJBBeanWSSoapHttp TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="EmployeesSDO TestCase" searchProperties="true" id="feeaa5dd-6fa6-4649-ac0f-1c327c2b7087"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>employeeId</con:name><con:value xsi:nil="true"/></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="createEmployeesSDO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HrSessionEJBBeanWSSoapHttp</con:interface><con:operation>createEmployeesSDO</con:operation><con:request name="createEmployeesSDO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/">
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/updateEmployeesSDO"/></con:call></con:operation><con:operation isOneWay="false" action="/nl.amis.sdo.jpa.services/countEmployeesSDO" name="countEmployeesSDO" bindingOperationName="countEmployeesSDO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nl:countEmployeesSDO>
+         <nl:findCriteria>
+            <typ:fetchStart>0</typ:fetchStart>
+            <typ:fetchSize>-1</typ:fetchSize>
+         </nl:findCriteria>
+         <nl:findControl>
+            <typ:retrieveAllTranslations>false</typ:retrieveAllTranslations>
+         </nl:findControl>
+      </nl:countEmployeesSDO>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/countEmployeesSDO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="/nl.amis.sdo.jpa.services/countDepartmentsSDO" name="countDepartmentsSDO" bindingOperationName="countDepartmentsSDO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/" xmlns:typ="http://xmlns.oracle.com/adf/svc/types/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <nl:countDepartmentsSDO>
+         <nl:findCriteria>
+            <typ:fetchStart>0</typ:fetchStart>
+            <typ:fetchSize>-1</typ:fetchSize>
+         </nl:findCriteria>
+         <nl:findControl>
+            <typ:retrieveAllTranslations>false</typ:retrieveAllTranslations>
+         </nl:findControl>
+      </nl:countDepartmentsSDO>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="/nl.amis.sdo.jpa.services/countDepartmentsSDO"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="HrSessionEJBBeanWSSoapHttp TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="EmployeesSDO TestCase" searchProperties="true" id="feeaa5dd-6fa6-4649-ac0f-1c327c2b7087"><con:settings/><con:testStep type="properties" name="Properties"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>employeeId</con:name><con:value xsi:nil="true"/></con:property></con:properties></con:config></con:testStep><con:testStep type="request" name="createEmployeesSDO"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HrSessionEJBBeanWSSoapHttp</con:interface><con:operation>createEmployeesSDO</con:operation><con:request name="createEmployeesSDO"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://pc100016989:7001/EjbSdoService-ModelSDO-context-root/HrSessionEJBBeanWS</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:nl="/nl.amis.sdo.jpa.services/">
    <soapenv:Header/>
    <soapenv:Body>
       <nl:createEmployeesSDO>

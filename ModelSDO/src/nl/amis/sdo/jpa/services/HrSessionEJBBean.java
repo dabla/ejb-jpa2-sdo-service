@@ -54,7 +54,7 @@ import oracle.jbo.service.errors.ServiceException;
 import oracle.webservices.annotations.PortableWebService;
 
 @Stateless(name = "HrSessionEJB", mappedName = "EjbSdoService-HrSessionEJB")
-@Remote(HrSessionEJB.class)
+//@Remote(HrSessionEJB.class)
 @PortableWebService(serviceName = "HrSessionEJBBeanWS",
                     targetNamespace = "/nl.amis.sdo.jpa.services/",
                     portName = "HrSessionEJBBeanWSSoapHttpPort",
@@ -69,18 +69,6 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
   
   protected EntityManager getEntityManager() {
     return em;
-  }
-
-  public Object queryByRange(String jpqlStmt, int firstResult,
-                             int maxResults) {
-    Query query = em.createQuery(jpqlStmt);
-    if (firstResult > 0) {
-      query = query.setFirstResult(firstResult);
-    }
-    if (maxResults > 0) {
-      query = query.setMaxResults(maxResults);
-    }
-    return query.getResultList();
   }
 
   static {
@@ -124,6 +112,11 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
   public DepartmentsSDO mergeDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
     return merge(Departments.class, departments);
   }
+  
+  public Long countDepartmentsSDO(FindCriteria findCriteria,
+                                              FindControl findControl) throws ServiceException {
+    return count(Departments.class, findCriteria, findControl);
+  }
 
   public List<DepartmentsSDO> findDepartmentsSDO(FindCriteria findCriteria,
                                               FindControl findControl) throws ServiceException {
@@ -163,6 +156,11 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
 
   public EmployeesSDO mergeEmployeesSDO(EmployeesSDO employees) throws ServiceException {
     return merge(Employees.class, employees);
+  }
+  
+  public Long countEmployeesSDO(FindCriteria findCriteria,
+                                              FindControl findControl) throws ServiceException {
+    return count(Employees.class, findCriteria, findControl);
   }
 
   public List<EmployeesSDO> findEmployeesSDO(FindCriteria findCriteria , 

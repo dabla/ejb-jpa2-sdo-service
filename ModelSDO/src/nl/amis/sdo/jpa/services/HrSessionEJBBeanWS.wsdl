@@ -7,7 +7,7 @@
      xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
      xmlns:types="/nl.amis.sdo.jpa.services/"
     >
-    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="classpath:/META-INF/wsdl/ServiceException.wsdl"/>
+    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="/META-INF/wsdl/ServiceException.wsdl"/>
     <wsdl:types>
         <schema xmlns="http://www.w3.org/2001/XMLSchema">
             <import namespace="/nl.amis.sdo.jpa.services/" schemaLocation="HrSessionEJBBeanWS.xsd"/>
@@ -43,6 +43,12 @@
     </wsdl:message>
     <wsdl:message name="HrSessionEJBBeanWS_mergeEmployeesSDOResponse">
         <wsdl:part name="parameters" element="types:mergeEmployeesSDOResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HrSessionEJBBeanWS_countEmployeesSDO">
+        <wsdl:part name="parameters" element="types:countEmployeesSDO"/>
+    </wsdl:message>
+    <wsdl:message name="HrSessionEJBBeanWS_countEmployeesSDOResponse">
+        <wsdl:part name="parameters" element="types:countEmployeesSDOResponse"/>
     </wsdl:message>
     <wsdl:message name="HrSessionEJBBeanWS_findEmployeesSDO">
         <wsdl:part name="parameters" element="types:findEmployeesSDO"/>
@@ -93,6 +99,12 @@
     <wsdl:message name="HrSessionEJBBeanWS_mergeDepartmentsSDOResponse">
         <wsdl:part name="parameters" element="types:mergeDepartmentsSDOResponse"/>
     </wsdl:message>
+    <wsdl:message name="HrSessionEJBBeanWS_countDepartmentsSDO">
+        <wsdl:part name="parameters" element="types:countDepartmentsSDO"/>
+    </wsdl:message>
+    <wsdl:message name="HrSessionEJBBeanWS_countDepartmentsSDOResponse">
+        <wsdl:part name="parameters" element="types:countDepartmentsSDOResponse"/>
+    </wsdl:message>
     <wsdl:message name="HrSessionEJBBeanWS_findDepartmentsSDO">
         <wsdl:part name="parameters" element="types:findDepartmentsSDO"/>
     </wsdl:message>
@@ -138,6 +150,11 @@
             <wsdl:output message="tns:HrSessionEJBBeanWS_mergeEmployeesSDOResponse"/>
             <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
         </wsdl:operation>
+        <wsdl:operation name="countEmployeesSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_countEmployeesSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_countEmployeesSDOResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
         <wsdl:operation name="findEmployeesSDO">
             <wsdl:input message="tns:HrSessionEJBBeanWS_findEmployeesSDO"/>
             <wsdl:output message="tns:HrSessionEJBBeanWS_findEmployeesSDOResponse"/>
@@ -177,6 +194,11 @@
         <wsdl:operation name="mergeDepartmentsSDO">
             <wsdl:input message="tns:HrSessionEJBBeanWS_mergeDepartmentsSDO"/>
             <wsdl:output message="tns:HrSessionEJBBeanWS_mergeDepartmentsSDOResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="countDepartmentsSDO">
+            <wsdl:input message="tns:HrSessionEJBBeanWS_countDepartmentsSDO"/>
+            <wsdl:output message="tns:HrSessionEJBBeanWS_countDepartmentsSDOResponse"/>
             <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
         </wsdl:operation>
         <wsdl:operation name="findDepartmentsSDO">
@@ -248,6 +270,18 @@
         </wsdl:operation>
         <wsdl:operation name="mergeEmployeesSDO">
             <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeEmployeesSDO"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="countEmployeesSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/countEmployeesSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>
@@ -345,6 +379,18 @@
         </wsdl:operation>
         <wsdl:operation name="mergeDepartmentsSDO">
             <soap:operation soapAction="/nl.amis.sdo.jpa.services/mergeDepartmentsSDO"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="countDepartmentsSDO">
+            <soap:operation soapAction="/nl.amis.sdo.jpa.services/countDepartmentsSDO"/>
             <wsdl:input>
                 <soap:body use="literal"/>
             </wsdl:input>

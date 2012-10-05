@@ -76,7 +76,7 @@ public abstract class AbstractService {
   }
   
   @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> S merge(final Class<T> implementation, final S dataObject) {
+  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> S merge(final Class<T> implementation, final S dataObject) {
     logger.log(Level.FINEST, "implementation: {0}", implementation);
     logger.log(Level.FINEST, "dataObject: {0}", dataObject);
     if (dataObject != null) {
@@ -142,31 +142,21 @@ public abstract class AbstractService {
     return dataObjects;
   }
   
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> Long count(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
+    final CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+    final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+    final Root<T> root = cq.from(implementation);
+    cq.select(cb.count(root));
+    appendToQueryBuilder(cb, cq, root, findCriteria);
+    return getEntityManager().createQuery(cq).getSingleResult();
+  }
+  
   protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> find(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
     final CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
     final CriteriaQuery<T> cq = cb.createQuery(implementation);
     final Root<T> root = cq.from(implementation);
     cq.select(root);
-
-    logger.log(Level.FINEST, "findCriteria: {0}", findCriteria);
-
-    if (findCriteria != null) {
-      final List<Order> order = buildOrderBy(cb, cq, root, findCriteria);
-      
-      logger.log(Level.FINEST, "order: {0}", order);
-      
-      if (order != null) {
-        cq.orderBy(order);
-      }
-      
-      final Predicate predicate = buildWhere(cb, cq, root, findCriteria);
-      
-      logger.log(Level.FINEST, "predicate: {0}", predicate);
-
-      if (predicate != null) {
-        cq.where(predicate);
-      }
-    }
+    appendToQueryBuilder(cb, cq, root, findCriteria);
     
     final TypedQuery<T> tq = getEntityManager().createQuery(cq);
     
@@ -190,11 +180,12 @@ public abstract class AbstractService {
       final List<S> resultListSDO = new ArrayList<S>(resultList.size());
       
       for (final T entity : resultList) {
-        System.out.println("entity: " + entity);
-        System.out.println("dataObject: " + entity.toDataObject());
+        logger.log(Level.FINEST, "entity: {0}", entity);
+        logger.log(Level.FINEST, "dataObject: {0}", entity.toDataObject());
         resultListSDO.add(entity.toDataObject());
       }
       
+      System.out.println("resultListSDO: " + resultListSDO);
       logger.log(Level.FINEST, "resultListSDO: {0}", resultListSDO);
       
       return resultListSDO;
@@ -203,7 +194,29 @@ public abstract class AbstractService {
     return null;
   }
   
-  protected <T> List<Order> buildOrderBy(final CriteriaBuilder cb, final CriteriaQuery<T> cq, final Root<T> root, final FindCriteria findCriteria) {
+  protected <T> void appendToQueryBuilder(final CriteriaBuilder cb, final CriteriaQuery cq, final Root<T> root, final FindCriteria findCriteria) {
+    logger.log(Level.FINEST, "findCriteria: {0}", findCriteria);
+
+    if (findCriteria != null) {
+      final List<Order> order = buildOrderBy(cb, cq, root, findCriteria);
+      
+      logger.log(Level.FINEST, "order: {0}", order);
+      
+      if (order != null) {
+        cq.orderBy(order);
+      }
+      
+      final Predicate predicate = buildWhere(cb, cq, root, findCriteria);
+      
+      logger.log(Level.FINEST, "predicate: {0}", predicate);
+
+      if (predicate != null) {
+        cq.where(predicate);
+      }
+    }
+  }
+  
+  protected <T> List<Order> buildOrderBy(final CriteriaBuilder cb, final CriteriaQuery cq, final Root<T> root, final FindCriteria findCriteria) {
     logger.log(Level.FINEST, "sortOrder: {0}", findCriteria.getSortOrder());
     
     if (findCriteria.getSortOrder() != null) {
@@ -229,7 +242,7 @@ public abstract class AbstractService {
     return null;
   }
   
-  protected <T> Predicate buildWhere(final CriteriaBuilder cb, final CriteriaQuery<T> cq, final Root<T> root, final FindCriteria findCriteria) {
+  protected <T> Predicate buildWhere(final CriteriaBuilder cb, final CriteriaQuery cq, final Root<T> root, final FindCriteria findCriteria) {
     logger.log(Level.FINEST, "filter: {0}", findCriteria.getFilter());
     
     if (findCriteria.getFilter() != null) {

@@ -36,8 +36,6 @@ import oracle.webservices.annotations.SDODatabinding;
     wsdlLocation="nl/amis/sdo/jpa/services/HrSessionEJBBeanWS.wsdl")
 @SDODatabinding(schemaLocation="nl/amis/sdo/jpa/services/HrSessionEJBBeanWS.xsd")
 public interface HrSessionEJB {
-    Object queryByRange(String jpqlStmt, int firstResult, int maxResults);
-    
   @WebMethod(action="/nl.amis.sdo.jpa.services/getDepartmentsSDO",
       operationName="getDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
@@ -86,7 +84,19 @@ public interface HrSessionEJB {
   @WebResult(name="result")
   public DepartmentsSDO mergeDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN, name="departments")
       DepartmentsSDO departments) throws ServiceException;
-    
+  
+  @WebMethod(action="/nl.amis.sdo.jpa.services/countDepartmentsSDO",
+      operationName="countDepartmentsSDO")
+  @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
+      localName="countDepartmentsSDO")
+  @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
+      localName="countDepartmentsSDOResponse")
+  @WebResult(name="result")
+  public Long countDepartmentsSDO(@WebParam(mode = WebParam.Mode.IN,
+          name="findCriteria")
+      FindCriteria findCriteria, @WebParam(mode = WebParam.Mode.IN, name="findControl")
+      FindControl findControl) throws ServiceException;
+  
   @WebMethod(action="/nl.amis.sdo.jpa.services/findDepartmentsSDO",
       operationName="findDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
@@ -170,7 +180,19 @@ public interface HrSessionEJB {
   @WebResult(name="result")
   public EmployeesSDO mergeEmployeesSDO(@WebParam(mode = WebParam.Mode.IN, name="employees")
       EmployeesSDO employees) throws ServiceException;
-    
+  
+  @WebMethod(action="/nl.amis.sdo.jpa.services/countEmployeesSDO",
+      operationName="countEmployeesSDO")
+  @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
+      localName="countEmployeesSDO")
+  @ResponseWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
+      localName="countEmployeesSDOResponse")
+  @WebResult(name="result")
+  public Long countEmployeesSDO(@WebParam(mode = WebParam.Mode.IN,
+          name="findCriteria")
+      FindCriteria findCriteria, @WebParam(mode = WebParam.Mode.IN, name="findControl")
+      FindControl findControl) throws ServiceException;
+  
   @WebMethod(action="/nl.amis.sdo.jpa.services/findEmployeesSDO",
       operationName="findEmployeesSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",

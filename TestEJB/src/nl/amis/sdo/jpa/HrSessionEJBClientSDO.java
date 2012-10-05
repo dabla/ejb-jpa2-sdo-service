@@ -60,10 +60,18 @@ public class HrSessionEJBClientSDO {
           final FindControl findControl = (FindControl)DataFactory.INSTANCE.create(TypeHelper.INSTANCE.getType(FindControl.class));
           findControl.setRetrieveAllTranslations(false);
           
+          final Long countDepartments = hrSessionEJB.countDepartmentsSDO(findCriteria,findControl);
+          
+          System.out.println("countDepartments: " + countDepartments);
+          
             for (DepartmentsSDO departments :
                  (List<DepartmentsSDO>)hrSessionEJB.findDepartmentsSDO(findCriteria,findControl)) {
                 printDepartments(departments);
             }
+          
+          final Long countEmployees = hrSessionEJB.countEmployeesSDO(findCriteria,findControl);
+          
+          System.out.println("countEmployees: " + countEmployees);
           
           for (EmployeesSDO employees :
                (List<EmployeesSDO>)hrSessionEJB.findEmployeesSDO(findCriteria,findControl)) {

@@ -73,6 +73,21 @@
             </sequence>
         </complexType>
     </element>
+    <element name="countEmployeesSDO">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns3:FindCriteria"/>
+                <element name="findControl" type="ns3:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="countEmployeesSDOResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="long" minOccurs="1" maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
     <element name="findEmployeesSDO">
         <complexType>
             <sequence>
@@ -185,6 +200,21 @@
         <complexType>
             <sequence>
                 <element name="result" type="ns0:DepartmentsSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="countDepartmentsSDO">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns3:FindCriteria"/>
+                <element name="findControl" type="ns3:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="countDepartmentsSDOResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="long" minOccurs="1" maxOccurs="1"/>
             </sequence>
         </complexType>
     </element>
