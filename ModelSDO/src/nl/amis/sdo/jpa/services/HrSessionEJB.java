@@ -35,7 +35,7 @@ import oracle.webservices.annotations.SDODatabinding;
 @PortableWebService(targetNamespace="/nl.amis.sdo.jpa.services/", name="HrSessionEJBBeanWS",
     wsdlLocation="nl/amis/sdo/jpa/services/HrSessionEJBBeanWS.wsdl")
 @SDODatabinding(schemaLocation="nl/amis/sdo/jpa/services/HrSessionEJBBeanWS.xsd")
-public interface HrSessionEJB {
+public interface HrSessionEJB extends Service {
   @WebMethod(action="/nl.amis.sdo.jpa.services/getDepartmentsSDO",
       operationName="getDepartmentsSDO")
   @RequestWrapper(targetNamespace="/nl.amis.sdo.jpa.services/",
