@@ -11,6 +11,8 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+
+import nl.amis.sdo.jpa.entities.Departments;
 import nl.amis.sdo.jpa.entities.DepartmentsSDO;
 import nl.amis.sdo.jpa.entities.EmployeesSDO;
 import nl.amis.sdo.jpa.services.HrSessionEJB;
@@ -60,7 +62,9 @@ public class HrSessionEJBClientSDO {
           final FindControl findControl = (FindControl)DataFactory.INSTANCE.create(TypeHelper.INSTANCE.getType(FindControl.class));
           findControl.setRetrieveAllTranslations(false);
           
-          final Long countDepartments = hrSessionEJB.countDepartmentsSDO(findCriteria,findControl);
+          final Long countDepartments = hrSessionEJB.count(Departments.class, findCriteria, findControl);
+          
+          /*final Long countDepartments = hrSessionEJB.countDepartmentsSDO(findCriteria,findControl);*/
           
           System.out.println("countDepartments: " + countDepartments);
           
