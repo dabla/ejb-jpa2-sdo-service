@@ -102,7 +102,7 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
   }
 
   public DepartmentsSDO updateDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
-    return update(Departments.class, departments);
+    return merge(Departments.class, departments);
   }
 
   public void deleteDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
@@ -110,7 +110,7 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
   }
 
   public DepartmentsSDO mergeDepartmentsSDO(DepartmentsSDO departments) throws ServiceException {
-    return update(Departments.class, departments);
+    return merge(Departments.class, departments);
   }
   
   public Long countDepartmentsSDO(FindCriteria findCriteria,
@@ -146,7 +146,7 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
 
   public EmployeesSDO updateEmployeesSDO(EmployeesSDO employees) throws ServiceException {
     System.out.println("updateEmployees: " + employees);
-    return update(Employees.class, employees);
+    return merge(Employees.class, employees);
   }
 
   public void deleteEmployeesSDO(EmployeesSDO employees) throws ServiceException {
@@ -155,7 +155,7 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
   }
 
   public EmployeesSDO mergeEmployeesSDO(EmployeesSDO employees) throws ServiceException {
-    return update(Employees.class, employees);
+    return merge(Employees.class, employees);
   }
   
   public Long countEmployeesSDO(FindCriteria findCriteria,

@@ -31,16 +31,16 @@ import nl.amis.sdo.jpa.entities.Employees;
 import nl.amis.sdo.jpa.entities.EmployeesSDO;
 
 import oracle.jbo.common.service.types.FindControl;
-import oracle.jbo.common.service.types.FindCriteria;
 import oracle.jbo.common.service.types.ProcessControl;
 import oracle.jbo.common.service.types.ProcessData;
 import oracle.jbo.common.service.types.SortAttribute;
 import oracle.jbo.common.service.types.ViewCriteriaItem;
 import oracle.jbo.common.service.types.ViewCriteriaRow;
+import oracle.jbo.common.types.FindCriteria;
 
 import org.eclipse.persistence.sdo.helper.ListWrapper;
 
-public abstract class AbstractService implements Service {
+public abstract class AbstractService {
   protected static final Logger logger = Logger.getLogger(AbstractService.class.getName());
   
   public AbstractService() {
@@ -49,7 +49,7 @@ public abstract class AbstractService implements Service {
   
   protected abstract EntityManager getEntityManager();
   
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> S get(final Class<T> implementation, final Object id) {
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> S get(final Class<T> implementation, final Object id) {
     logger.log(Level.FINEST, "implementation: {0}", implementation);
     logger.log(Level.FINEST, "id: {0}", id);
     final T entity = getEntityManager().find(implementation, id);
@@ -62,7 +62,7 @@ public abstract class AbstractService implements Service {
   }
   
   @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> S create(final S dataObject) {
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> S create(final S dataObject) {
     logger.log(Level.FINEST, "dataObject: {0}", dataObject);
     System.out.println("dataObject: " + dataObject);
     final T entity = dataObject.toEntity();
@@ -76,7 +76,7 @@ public abstract class AbstractService implements Service {
   }
   
   @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> S update(final Class<T> implementation, final S dataObject) {
+  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> S merge(final Class<T> implementation, final S dataObject) {
     logger.log(Level.FINEST, "implementation: {0}", implementation);
     logger.log(Level.FINEST, "dataObject: {0}", dataObject);
     if (dataObject != null) {
@@ -86,15 +86,63 @@ public abstract class AbstractService implements Service {
   }
   
   @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> void delete(final Class<T> implementation, final S dataObject) {
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> void delete(final Class<T> implementation, final S dataObject) {
     logger.log(Level.FINEST, "implementation: {0}", implementation);
     logger.log(Level.FINEST, "dataObject: {0}", dataObject);
     if (dataObject != null) {
       getEntityManager().remove(getEntityManager().find(implementation, dataObject.toEntity().getId()));
     }
   }
+    
+    protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> ProcessData process(final Class<T> implementation, final ProcessData request) {
+      //return process(implementation, processControl.g, request.getValue());
+      final List<S> dataObjects = request.getValue();
+      
+      for (int index = 0; index < dataObjects.size(); index++) {
+        final ChangeSummary changeSummary = request.getChangeSummary();
+        final DataObject dataObject = (DataObject)dataObjects.get(index);
+        
+        if (changeSummary.isCreated(dataObject)) {
+          dataObjects.set(index, create(dataObjects.get(index)));
+        }
+        else if (changeSummary.isModified(dataObject)) {
+          dataObjects.set(index, merge(implementation, dataObjects.get(index)));
+        }
+        else if (changeSummary.isDeleted(dataObject)) {
+          delete(implementation, dataObjects.get(index));
+        }
+      }
+      
+      return request;
+    }
   
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> Long count(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
+     /*protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> process(final Class<T> implementation, final String operation, final List<S> dataObjects) {
+      final String[] operations = new String[dataObjects.size()];
+      Arrays.fill(operations, operation);
+      return process(implementation, operations, dataObjects);
+     }*/
+    
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> process(final Class<T> implementation, final String operation, final List<S> dataObjects) {
+    if (dataObjects != null) {
+        for (int index = 0; index < dataObjects.size(); index++) {
+          logger.log(Level.FINEST, "operations[{0}]: {1}", new Object[]{index,operation});
+          
+          if ("Create".equals(operation)) {
+            dataObjects.set(index, create(dataObjects.get(index)));
+          }
+          else if ("Merge".equals(operation) || "Update".equals(operation)) {
+            dataObjects.set(index, merge(implementation, dataObjects.get(index)));
+          }
+          else if ("Delete".equals(operation)) {
+            delete(implementation, dataObjects.get(index));
+          }
+        }
+    }
+    
+    return dataObjects;
+  }
+  
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> Long count(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
     final CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
     final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
     final Root<T> root = cq.from(implementation);
@@ -103,7 +151,7 @@ public abstract class AbstractService implements Service {
     return getEntityManager().createQuery(cq).getSingleResult();
   }
   
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> find(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
+  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> find(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
     final CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
     final CriteriaQuery<T> cq = cb.createQuery(implementation);
     final Root<T> root = cq.from(implementation);
@@ -144,54 +192,6 @@ public abstract class AbstractService implements Service {
     }
     
     return null;
-  }
-  
-  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> ProcessData process(final Class<T> implementation, final ProcessData request) {
-    //return process(implementation, processControl.g, request.getValue());
-    final List<S> dataObjects = request.getValue();
-    
-    for (int index = 0; index < dataObjects.size(); index++) {
-      final ChangeSummary changeSummary = request.getChangeSummary();
-      final DataObject dataObject = (DataObject)dataObjects.get(index);
-      
-      if (changeSummary.isCreated(dataObject)) {
-        dataObjects.set(index, create(dataObjects.get(index)));
-      }
-      else if (changeSummary.isModified(dataObject)) {
-        dataObjects.set(index, update(implementation, dataObjects.get(index)));
-      }
-      else if (changeSummary.isDeleted(dataObject)) {
-        delete(implementation, dataObjects.get(index));
-      }
-    }
-    
-    return request;
-  }
-  
-   /*protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> process(final Class<T> implementation, final String operation, final List<S> dataObjects) {
-    final String[] operations = new String[dataObjects.size()];
-    Arrays.fill(operations, operation);
-    return process(implementation, operations, dataObjects);
-   }*/
-  
-  protected <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> process(final Class<T> implementation, final String operation, final List<S> dataObjects) {
-  if (dataObjects != null) {
-      for (int index = 0; index < dataObjects.size(); index++) {
-        logger.log(Level.FINEST, "operations[{0}]: {1}", new Object[]{index,operation});
-        
-        if ("Create".equals(operation)) {
-          dataObjects.set(index, create(dataObjects.get(index)));
-        }
-        else if ("Merge".equals(operation) || "Update".equals(operation)) {
-          dataObjects.set(index, update(implementation, dataObjects.get(index)));
-        }
-        else if ("Delete".equals(operation)) {
-          delete(implementation, dataObjects.get(index));
-        }
-      }
-  }
-  
-  return dataObjects;
   }
   
   protected <T> void appendToQueryBuilder(final CriteriaBuilder cb, final CriteriaQuery cq, final Root<T> root, final FindCriteria findCriteria) {
