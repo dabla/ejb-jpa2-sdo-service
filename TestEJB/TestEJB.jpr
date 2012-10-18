@@ -70,9 +70,9 @@
    <hash n="oracle.ide.model.DependencyConfiguration">
       <list n="dependencyList">
          <hash>
-            <value n="class" v="oracle.jdeveloper.library.ProjectLibrary"/>
-            <url n="sourceOwnerURL" path="../EjbSdoService.jws"/>
-            <url n="sourceURL" path="../ModelSDO/ModelSDO.jpr"/>
+            <value n="adapterClass" v="oracle.jdevimpl.deploy.common.DefaultProfileDependable"/>
+            <url n="ownerURL" path="../ModelSDO/ModelSDO.jpr"/>
+            <value n="profileName" v="sdoHrInterface"/>
          </hash>
       </list>
    </hash>
@@ -123,6 +123,10 @@
             <value n="id" v="ADF Model Generic Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="BC4J Service Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <list n="libraryReferences">
          <hash>
@@ -131,6 +135,10 @@
          </hash>
          <hash>
             <value n="id" v="ADF Model Generic Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BC4J Service Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
