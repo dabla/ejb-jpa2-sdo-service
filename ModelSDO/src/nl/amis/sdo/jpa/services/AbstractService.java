@@ -1,20 +1,16 @@
 package nl.amis.sdo.jpa.services;
 
+
 import commonj.sdo.ChangeSummary;
 import commonj.sdo.DataObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.TransactionAttribute;
-
 import javax.ejb.TransactionAttributeType;
-
-import javax.jws.WebParam;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -27,18 +23,14 @@ import javax.persistence.criteria.Root;
 
 import nl.amis.sdo.jpa.entities.BaseDataObject;
 import nl.amis.sdo.jpa.entities.BaseEntity;
-import nl.amis.sdo.jpa.entities.Employees;
-import nl.amis.sdo.jpa.entities.EmployeesSDO;
 
-import oracle.jbo.common.service.types.FindCriteria;
 import oracle.jbo.common.service.types.FindControl;
-import oracle.jbo.common.service.types.ProcessControl;
+import oracle.jbo.common.service.types.FindCriteria;
 import oracle.jbo.common.service.types.ProcessData;
 import oracle.jbo.common.service.types.SortAttribute;
 import oracle.jbo.common.service.types.ViewCriteriaItem;
 import oracle.jbo.common.service.types.ViewCriteriaRow;
 
-import org.eclipse.persistence.sdo.helper.ListWrapper;
 
 public abstract class AbstractService implements Service {
   protected static final Logger logger = Logger.getLogger(AbstractService.class.getName());
@@ -92,7 +84,7 @@ public abstract class AbstractService implements Service {
     }
   }
   
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> Long count(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
+  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> Long count(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) {
     final CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
     final CriteriaQuery<Long> cq = cb.createQuery(Long.class);
     final Root<T> root = cq.from(implementation);
@@ -101,7 +93,7 @@ public abstract class AbstractService implements Service {
     return getEntityManager().createQuery(cq).getSingleResult();
   }
   
-  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> find(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) throws RuntimeException {
+  public <S extends BaseDataObject<T>, T extends BaseEntity<S>> List<S> find(final Class<T> implementation, final FindCriteria findCriteria /* JSR-227 API - BC4J Service Runtime */, final FindControl findControl /* BC4J Service Runtime */) {
     final CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
     final CriteriaQuery<T> cq = cb.createQuery(implementation);
     final Root<T> root = cq.from(implementation);
@@ -243,62 +235,75 @@ public abstract class AbstractService implements Service {
   }
   
   protected <T> Predicate buildWhere(final CriteriaBuilder cb, final CriteriaQuery cq, final Root<T> root, final FindCriteria findCriteria) {
-    logger.log(Level.FINEST, "filter: {0}", findCriteria.getFilter());
-    
-    if (findCriteria.getFilter() != null) {
-      final List<ViewCriteriaRow> groups = findCriteria.getFilter().getGroup();
+      logger.log(Level.FINEST, "filter: {0}", findCriteria.getFilter());
       
-      logger.log(Level.FINEST, "groups: {0}", groups);
-
-      if (groups != null) {
-        final List<Predicate> wherePredicates = new ArrayList<Predicate>();
+      if (findCriteria.getFilter() != null) {
+        final List<ViewCriteriaRow> groups = findCriteria.getFilter().getGroup();
         
-        for (final ViewCriteriaRow group : groups) {
-          logger.log(Level.FINEST, "group: {0}", group);
+        logger.log(Level.FINEST, "groups: {0}", groups);
+
+        if (groups != null) {
+          final List<Predicate> wherePredicates = new ArrayList<Predicate>();
           
-          final List<ViewCriteriaItem> items = group.getItem();
-          
-          logger.log(Level.FINEST, "items: {0}", items);
-          
-          if (items != null) {
-            for (final ViewCriteriaItem item : items) {
-              logger.log(Level.FINEST, "item: {0}", item);
-              logger.log(Level.FINEST, "upperCaseCompare: {0}", item.getUpperCaseCompare());
-              logger.log(Level.FINEST, "attribute: {0}", item.getAttribute());
-              logger.log(Level.FINEST, "operator: {0}", item.getOperator());
-              logger.log(Level.FINEST, "list value: {0}", item.getValue());
-              
-              if ((item.getValue() != null) && !item.getValue().isEmpty()) {
-                logger.log(Level.FINEST, "first value: {0}", item.getValue().get(0));
+          for (final ViewCriteriaRow group : groups) {
+            logger.log(Level.FINEST, "group: {0}", group);
+            
+            final List<ViewCriteriaItem> items = group.getItem();
+            
+            logger.log(Level.FINEST, "items: {0}", items);
+            
+            if (items != null) {
+              for (final ViewCriteriaItem item : items) {
+                logger.log(Level.FINEST, "item: {0}", item);
+                logger.log(Level.FINEST, "upperCaseCompare: {0}", item.getUpperCaseCompare());
+                logger.log(Level.FINEST, "attribute: {0}", item.getAttribute());
+                logger.log(Level.FINEST, "operator: {0}", item.getOperator());
+                logger.log(Level.FINEST, "list value: {0}", item.getValue());
                 
-                if ("=".equals(item.getOperator())) {
-                  wherePredicates.add(cb.equal(root.get(camelize(item.getAttribute())), item.getValue().get(0)));
-                }
-                else if ("<>".equals(item.getOperator())) {
-                  wherePredicates.add(cb.notEqual(root.get(camelize(item.getAttribute())), item.getValue().get(0)));
-                }
-                else if ("like".equals(item.getOperator())) {
-                  final String value = new StringBuilder().append(item.getValue().get(0)).append("%").toString();
-                  logger.log(Level.FINEST, "string value: {0}", value);
-                  final Path<String> path = root.get(camelize(item.getAttribute()));
+                if ((item.getValue() != null) && !item.getValue().isEmpty()) {
+                  logger.log(Level.FINEST, "first value: {0}", item.getValue().get(0));
                   
-                  if (item.getUpperCaseCompare()) {
-                    wherePredicates.add(cb.like(cb.upper(path), value.toUpperCase()));
+                  if ("=".equals(item.getOperator())) {
+                    wherePredicates.add(add(cb, cb.equal(root.get(camelize(item.getAttribute())), item.getValue().get(0)), item));
                   }
-                  else {
-                    wherePredicates.add(cb.like(cb.lower(path), value.toLowerCase()));
+                  else if ("<>".equals(item.getOperator())) {
+                    wherePredicates.add(add(cb, cb.notEqual(root.get(camelize(item.getAttribute())), item.getValue().get(0)), item));
+                  }
+                  else if ("like".equals(item.getOperator())) {
+                    final String value = new StringBuilder().append(item.getValue().get(0)).append("%").toString();
+                    logger.log(Level.FINEST, "string value: {0}", value);
+                    final Path<String> path = root.get(camelize(item.getAttribute()));
+                    
+                    if (item.getUpperCaseCompare()) {
+                      wherePredicates.add(add(cb, cb.like(cb.upper(path), value.toUpperCase()), item));
+                    }
+                    else {
+                      wherePredicates.add(add(cb, cb.like(cb.lower(path), value.toLowerCase()), item));
+                    }
                   }
                 }
               }
             }
+            
+            if ("And".equals(group.getConjunction())) {
+              return cb.and(wherePredicates.toArray(new Predicate[0]));
+            }
+            
+            return cb.or(wherePredicates.toArray(new Predicate[0]));
           }
-        } 
-       return cb.and(wherePredicates.toArray(new Predicate[0]));
+        }
       }
+      
+      return null;
     }
     
-    return null;
-  }
+    protected Predicate add(final CriteriaBuilder cb, final Predicate predicate, final ViewCriteriaItem item) {
+      if ("And".equals(item.getConjunction())) {
+        return cb.and(predicate);
+      }
+      
+      return cb.or(predicate);
+    }
   
   // http://stackoverflow.com/questions/4052840/most-efficient-way-to-make-the-first-character-of-a-string-lower-case
   protected String camelize(final String value) {

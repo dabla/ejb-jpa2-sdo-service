@@ -1,11 +1,11 @@
 package nl.amis.sdo.jpa;
 
+
 import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.TypeHelper;
 import commonj.sdo.helper.XSDHelper;
 
 import java.util.Hashtable;
-
 import java.util.List;
 
 import javax.naming.Context;
@@ -19,11 +19,7 @@ import nl.amis.sdo.jpa.services.HrSessionEJB;
 
 import oracle.jbo.common.service.types.FindControl;
 import oracle.jbo.common.service.types.FindCriteria;
-import oracle.jbo.common.service.types.FindControlImpl;
-import oracle.jbo.common.service.types.FindCriteriaImpl;
 
-import org.eclipse.persistence.sdo.SDOType;
-import org.eclipse.persistence.sdo.helper.jaxb.JAXBHelperContext;
 
 public class HrSessionEJBClientSDO {
     public HrSessionEJBClientSDO() {
@@ -103,7 +99,7 @@ public class HrSessionEJBClientSDO {
         // WebLogic Server 10.x connection details
         env.put(Context.INITIAL_CONTEXT_FACTORY,
                 "weblogic.jndi.WLInitialContextFactory");
-        env.put(Context.PROVIDER_URL, "t3://pc100016989:7001");
+        env.put(Context.PROVIDER_URL, "t3://localhost:7001");
         return new InitialContext(env);
     }
 

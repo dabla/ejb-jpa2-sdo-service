@@ -70,9 +70,9 @@
    <hash n="oracle.ide.model.DependencyConfiguration">
       <list n="dependencyList">
          <hash>
-            <value n="adapterClass" v="oracle.jdevimpl.deploy.common.DefaultProfileDependable"/>
-            <url n="ownerURL" path="../ModelSDO/ModelSDO.jpr"/>
-            <value n="profileName" v="sdoHrInterface"/>
+            <value n="class" v="oracle.jdeveloper.library.ProjectLibrary"/>
+            <url n="sourceOwnerURL" path="../EjbSdoService.jws"/>
+            <url n="sourceURL" path="../ModelSDO/ModelSDO.jpr"/>
          </hash>
       </list>
    </hash>
