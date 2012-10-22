@@ -61,12 +61,6 @@
       <string v="oracle.bpm.fusion.repository.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
    </list>
    <value n="defaultPackage" v="nl.amis.sdo.jpa"/>
-   <hash n="ejbModuleContainer">
-      <list n="toplinkJpaClientUrls">
-         <url path="src/nl/amis/sdo/jpa/HrSessionEJBClient.java"/>
-         <url path="src/nl/amis/sdo/jpa/HrSessionEJBClientSDO.java"/>
-      </list>
-   </hash>
    <hash n="oracle.ide.model.DependencyConfiguration">
       <list n="dependencyList">
          <hash>

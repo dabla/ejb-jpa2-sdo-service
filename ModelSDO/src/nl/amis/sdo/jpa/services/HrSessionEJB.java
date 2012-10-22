@@ -1,11 +1,9 @@
 package nl.amis.sdo.jpa.services;
 
-import commonj.sdo.DataObject;
 
 import java.util.List;
 
 import javax.ejb.Remote;
-
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -15,9 +13,7 @@ import javax.jws.soap.SOAPBinding;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
-import nl.amis.sdo.jpa.entities.Departments;
 import nl.amis.sdo.jpa.entities.DepartmentsSDO;
-import nl.amis.sdo.jpa.entities.Employees;
 import nl.amis.sdo.jpa.entities.EmployeesSDO;
 
 import oracle.jbo.common.service.types.FindControl;

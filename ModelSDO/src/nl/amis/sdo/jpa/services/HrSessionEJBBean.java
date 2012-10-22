@@ -1,44 +1,14 @@
 package nl.amis.sdo.jpa.services;
 
 
-import commonj.sdo.DataObject;
-import commonj.sdo.helper.DataFactory;
-
 import commonj.sdo.helper.XSDHelper;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import java.util.logging.Level;
-
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
-
-
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-
-
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-
-import javax.jws.WebResult;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.Order;
-import javax.persistence.Query;
-
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-
-import javax.persistence.criteria.CriteriaQuery;
-
-import javax.persistence.criteria.Root;
-
-import javax.xml.ws.RequestWrapper;
-import javax.xml.ws.ResponseWrapper;
 
 import nl.amis.sdo.jpa.entities.Departments;
 import nl.amis.sdo.jpa.entities.DepartmentsSDO;
@@ -52,6 +22,7 @@ import oracle.jbo.common.service.types.ProcessData;
 import oracle.jbo.service.errors.ServiceException;
 
 import oracle.webservices.annotations.PortableWebService;
+
 
 @Stateless(name = "HrSessionEJB", mappedName = "EjbSdoService-HrSessionEJB")
 //@Remote(HrSessionEJB.class)
@@ -135,22 +106,18 @@ public class HrSessionEJBBean extends AbstractService implements HrSessionEJB {
   }
 
   public EmployeesSDO getEmployeesSDO(Long employeeId) throws ServiceException {
-    System.out.println("getEmployees: " + employeeId);
     return (EmployeesSDO)get(Employees.class, employeeId);
   }
 
   public EmployeesSDO createEmployeesSDO(EmployeesSDO employees) throws ServiceException {
-    System.out.println("createEmployees: " + employees);
     return create(employees);
   }
 
   public EmployeesSDO updateEmployeesSDO(EmployeesSDO employees) throws ServiceException {
-    System.out.println("updateEmployees: " + employees);
     return update(Employees.class, employees);
   }
 
   public void deleteEmployeesSDO(EmployeesSDO employees) throws ServiceException {
-    System.out.println("deleteEmployees: " + employees);
     delete(Employees.class, employees);
   }
 

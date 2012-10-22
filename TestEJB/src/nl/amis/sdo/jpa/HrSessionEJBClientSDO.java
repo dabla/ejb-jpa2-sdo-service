@@ -6,7 +6,6 @@ import commonj.sdo.helper.TypeHelper;
 import commonj.sdo.helper.XSDHelper;
 
 import java.util.Hashtable;
-import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -59,22 +58,22 @@ public class HrSessionEJBClientSDO {
           findControl.setRetrieveAllTranslations(false);
           
           // here we use generic count method
-          final Long countDepartments = hrSessionEJB.count(Departments.class, findCriteria,findControl);
+          final Long countDepartments = hrSessionEJB.count(Departments.class, findCriteria, findControl);
           
           System.out.println("countDepartments: " + countDepartments);
           
             for (DepartmentsSDO departments :
-                 (List<DepartmentsSDO>)hrSessionEJB.findDepartmentsSDO(findCriteria,findControl)) {
-                printDepartments(departments);
+                 hrSessionEJB.findDepartmentsSDO(findCriteria, findControl)) {
+              System.out.println("departments: " + departments);
             }
           
           // here we use entity specific count method
-          final Long countEmployees = hrSessionEJB.countEmployeesSDO(findCriteria,findControl);
+          final Long countEmployees = hrSessionEJB.countEmployeesSDO(findCriteria, findControl);
           
           System.out.println("countEmployees: " + countEmployees);
           
           for (EmployeesSDO employees :
-               (List<EmployeesSDO>)hrSessionEJB.findEmployeesSDO(findCriteria,findControl)) {
+               hrSessionEJB.findEmployeesSDO(findCriteria, findControl)) {
               System.out.println("employees: " + employees);
           }
 
@@ -83,24 +82,12 @@ public class HrSessionEJBClientSDO {
         }
     }
 
-    private static void printDepartments(DepartmentsSDO departments) {
-        System.out.println("departmentId = " + departments.getDepartmentId());
-        System.out.println("departmentName = " +
-                           departments.getDepartmentName());
-        System.out.println("locationId = " + departments.getLocationId());
-        System.out.println("employeesList = " +
-                           departments.getEmployeesList());
-        System.out.println("manager = " + departments.getManager());
-    }
-
-
     private static Context getInitialContext() throws NamingException {
         Hashtable env = new Hashtable();
         // WebLogic Server 10.x connection details
         env.put(Context.INITIAL_CONTEXT_FACTORY,
                 "weblogic.jndi.WLInitialContextFactory");
-        env.put(Context.PROVIDER_URL, "t3://localhost:7001");
+        env.put(Context.PROVIDER_URL, "t3://pc100016989:7001");
         return new InitialContext(env);
     }
-
 }

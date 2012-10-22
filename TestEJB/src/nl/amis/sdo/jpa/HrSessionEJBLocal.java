@@ -1,24 +1,24 @@
 package nl.amis.sdo.jpa;
 
+
 import commonj.sdo.helper.DataFactory;
 import commonj.sdo.helper.TypeHelper;
-
 import commonj.sdo.helper.XSDHelper;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
-
 import javax.persistence.Persistence;
 
 import nl.amis.sdo.jpa.entities.Departments;
-import nl.amis.sdo.jpa.entities.DepartmentsSDOImpl;
+import nl.amis.sdo.jpa.entities.DepartmentsSDO;
 import nl.amis.sdo.jpa.entities.EmployeesSDO;
 import nl.amis.sdo.jpa.services.HrSessionEJB;
 import nl.amis.sdo.jpa.services.HrSessionEJBBean;
 
 import oracle.jbo.common.service.types.FindControl;
 import oracle.jbo.common.service.types.FindCriteria;
+
 
 public class HrSessionEJBLocal {
   private static final class HrSessionEJBBeanLocal extends HrSessionEJBBean {
@@ -57,10 +57,10 @@ public class HrSessionEJBLocal {
     
     System.out.println("countDepartments: " + countDepartments);
     
-      /*for (DepartmentsSDO departments :
-           (List<DepartmentsSDO>)hrSessionEJB.find(DepartmentsSDOImpl.class, findCriteria, findControl)) {
-          printDepartments(departments);
-      }*/
+      for (DepartmentsSDO departments :
+           (List<DepartmentsSDO>)hrSessionEJB.find(Departments.class, findCriteria, findControl)) {
+        System.out.println("departments: " + departments);
+      }
     
     // here we use entity specific count method, which is also exposed and callable through SOAP
     final Long countEmployees = hrSessionEJB.countEmployeesSDO(findCriteria, findControl);
@@ -68,7 +68,7 @@ public class HrSessionEJBLocal {
     System.out.println("countEmployees: " + countEmployees);
     
     for (EmployeesSDO employees :
-         (List<EmployeesSDO>)hrSessionEJB.findEmployeesSDO(findCriteria, findControl)) {
+         hrSessionEJB.findEmployeesSDO(findCriteria, findControl)) {
         System.out.println("employees: " + employees);
     }
   }

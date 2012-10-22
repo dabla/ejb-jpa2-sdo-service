@@ -2,6 +2,7 @@ package nl.amis.sdo.jpa.entities;
 
 import org.eclipse.persistence.sdo.SDODataObject;
 
+
 public class EmployeesSDOImpl extends SDODataObject implements EmployeesSDO {
 
    public static final int START_PROPERTY_INDEX = 0;
@@ -104,5 +105,18 @@ public class EmployeesSDOImpl extends SDODataObject implements EmployeesSDO {
      employees.setSalary(getSalary());
      return employees;
    }
+   
+  public String toString() {
+    return new StringBuilder(getClass().getName())
+    .append("[departmentId=").append(getCommissionPct())
+    .append(",email=").append(getEmail())
+    .append(",employeeId=").append(getEmployeeId())
+    .append(",firstName=").append(getFirstName())
+    .append(",hireDate=").append(getHireDate())
+    .append(",jobId=").append(getJobId())
+    .append(",lastName=").append(getLastName())
+    .append(",managerId=").append(getManagerId())
+    .append(",phoneNumber=").append(getPhoneNumber())
+    .append(",salaryu=").append(getSalary()).append("]").toString();
+  }
 }
-

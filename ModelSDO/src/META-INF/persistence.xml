@@ -5,12 +5,12 @@
     <class>nl.amis.sdo.jpa.entities.Departments</class>
     <class>nl.amis.sdo.jpa.entities.Employees</class>
     <properties>
-      <property name="eclipselink.jdbc.driver"
+      <property name="javax.persistence.jdbc.driver"
                 value="oracle.jdbc.OracleDriver"/>
-      <property name="eclipselink.jdbc.url"
+      <property name="javax.persistence.jdbc.url"
                 value="jdbc:oracle:thin:@localhost:1521:XE"/>
-      <property name="eclipselink.jdbc.user" value="hr"/>
-      <property name="eclipselink.jdbc.password" value="hr"/>
+      <property name="javax.persistence.jdbc.user" value="hr"/>
+      <property name="javax.persistence.jdbc.password" value="hr"/>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.target-server" value="WebLogic_10"/>
       <property name="eclipselink.logging.session" value="false"/>

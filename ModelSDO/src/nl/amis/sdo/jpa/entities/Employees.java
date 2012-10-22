@@ -163,8 +163,9 @@ public class Employees implements BaseEntity<EmployeesSDO>, Serializable {
     public EmployeesSDO toDataObject() {
           final EmployeesSDO employeesSDO = ( EmployeesSDO )DataFactory.INSTANCE.create(EmployeesSDO.class);
           
-          if (getCommissionPct() != null )
+          if (getCommissionPct() != null ) {
             employeesSDO.setCommissionPct(getCommissionPct());
+          }
 
           employeesSDO.setEmail(getEmail());
           employeesSDO.setEmployeeId(getEmployeeId());
@@ -173,8 +174,9 @@ public class Employees implements BaseEntity<EmployeesSDO>, Serializable {
           employeesSDO.setJobId(getJobId());
           employeesSDO.setLastName(getLastName());
 
-          if (getManagerId() != null )
+          if (getManagerId() != null ) {
             employeesSDO.setManagerId(getManagerId());
+          }
 
           employeesSDO.setPhoneNumber(getPhoneNumber());
           employeesSDO.setSalary(getSalary());

@@ -22,4 +22,3 @@ public interface DepartmentsSDO extends BaseDataObject<Departments> {
 
    public void setManager(nl.amis.sdo.jpa.entities.EmployeesSDO value);
 }
-

@@ -1,6 +1,7 @@
 package nl.amis.sdo.jpa.entities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.persistence.sdo.SDODataObject;
@@ -68,5 +69,15 @@ public class DepartmentsSDOImpl extends SDODataObject implements DepartmentsSDO 
      departments.setManager(getManager().toEntity());
      return departments;
    }
-}
 
+   public String toString() {
+     final StringBuilder result = new StringBuilder(getClass().getName())
+     .append("[departmentId=").append(getDepartmentId())
+     .append(",departmentName=").append(getDepartmentName());
+     if (getEmployeesList() != null) {
+       result.append(",employeesList=").append(Arrays.toString(getEmployeesList().toArray()));
+     }
+     return result.append(",locationId=").append(getLocationId())
+     .append(",manager=").append(getManager()).append("]").toString();
+   }
+}

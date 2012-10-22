@@ -42,4 +42,3 @@ public interface EmployeesSDO extends BaseDataObject<Employees> {
 
    public void setSalary(double value);
 }
-

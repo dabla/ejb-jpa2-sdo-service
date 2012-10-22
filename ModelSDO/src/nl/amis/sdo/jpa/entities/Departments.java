@@ -38,7 +38,6 @@ public class Departments implements BaseEntity<DepartmentsSDO>, Serializable {
 
     @ManyToOne
     @JoinColumn(name = "MANAGER_ID")
-    @OneToMany(fetch = FetchType.EAGER)
     private Employees manager;
 
     @OneToMany(mappedBy = "departments", fetch = FetchType.EAGER)
@@ -116,8 +115,9 @@ public class Departments implements BaseEntity<DepartmentsSDO>, Serializable {
           departmentsSDO.setEmployeesList(employeesList);
       }
       departmentsSDO.setLocationId(getLocationId());
-      if (getManager() != null)
+      if (getManager() != null) {
         departmentsSDO.setManager(getManager().toDataObject());
+      }
       return departmentsSDO;
     }
 }

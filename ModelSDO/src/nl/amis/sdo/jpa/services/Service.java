@@ -6,15 +6,12 @@ import javax.ejb.Remote;
 
 import javax.jws.WebMethod;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import nl.amis.sdo.jpa.entities.BaseDataObject;
 import nl.amis.sdo.jpa.entities.BaseEntity;
 
 import oracle.jbo.common.service.types.FindControl;
 import oracle.jbo.common.service.types.FindCriteria;
+
 
 @Remote
 public interface Service {
