@@ -1,6 +1,6 @@
 package nl.amis.sdo.jpa.entities;
 
-public interface DepartmentsSDO extends BaseDataObject<Departments> {
+public interface DepartmentsSDO {
 
    public long getDepartmentId();
 
@@ -10,9 +10,9 @@ public interface DepartmentsSDO extends BaseDataObject<Departments> {
 
    public void setDepartmentName(java.lang.String value);
 
-   public java.util.List getEmployeesList();
+   public java.util.List<EmployeesSDO> getEmployeesList();
 
-   public void setEmployeesList(java.util.List value);
+   public void setEmployeesList(java.util.List<EmployeesSDO> value);
 
    public long getLocationId();
 
@@ -22,3 +22,4 @@ public interface DepartmentsSDO extends BaseDataObject<Departments> {
 
    public void setManager(nl.amis.sdo.jpa.entities.EmployeesSDO value);
 }
+

@@ -2,15 +2,15 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="ModelSDOLocal" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>nl.amis.sdo.jpa.entities.Departments</class>
-    <class>nl.amis.sdo.jpa.entities.Employees</class>
+    <class>nl.amis.sdo.jpa.entities.DepartmentsSDOImpl</class>
+    <class>nl.amis.sdo.jpa.entities.EmployeesSDOImpl</class>
     <properties>
-      <property name="javax.persistence.jdbc.driver"
+      <property name="eclipselink.jdbc.driver"
                 value="oracle.jdbc.OracleDriver"/>
-      <property name="javax.persistence.jdbc.url"
+      <property name="eclipselink.jdbc.url"
                 value="jdbc:oracle:thin:@localhost:1521:XE"/>
-      <property name="javax.persistence.jdbc.user" value="hr"/>
-      <property name="javax.persistence.jdbc.password" value="hr"/>
+      <property name="eclipselink.jdbc.user" value="hr"/>
+      <property name="eclipselink.jdbc.password" value="hr"/>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.target-server" value="WebLogic_10"/>
       <property name="eclipselink.logging.session" value="false"/>
@@ -22,8 +22,8 @@
   <persistence-unit name="ModelSDO">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:/app/jdbc/jdbc/hrDS</jta-data-source>
-    <class>nl.amis.sdo.jpa.entities.Departments</class>
-    <class>nl.amis.sdo.jpa.entities.Employees</class>
+    <class>nl.amis.sdo.jpa.entities.DepartmentsSDOImpl</class>
+    <class>nl.amis.sdo.jpa.entities.EmployeesSDOImpl</class>
     <properties>
       <property name="eclipselink.target-server" value="WebLogic_10"/>
       <property name="javax.persistence.jtaDataSource"

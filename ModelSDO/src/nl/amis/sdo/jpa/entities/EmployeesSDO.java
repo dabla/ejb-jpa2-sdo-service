@@ -1,6 +1,6 @@
 package nl.amis.sdo.jpa.entities;
 
-public interface EmployeesSDO extends BaseDataObject<Employees> {
+public interface EmployeesSDO {
 
    public double getCommissionPct();
 
@@ -42,3 +42,4 @@ public interface EmployeesSDO extends BaseDataObject<Employees> {
 
    public void setSalary(double value);
 }
+
