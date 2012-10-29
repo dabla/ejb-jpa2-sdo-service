@@ -15,6 +15,10 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import java.util.Arrays;
+
+import java.util.Date;
+
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 
@@ -28,6 +32,9 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import javax.xml.bind.DatatypeConverter;
+
+import oracle.jbo.common.JboCompOper;
 import oracle.jbo.common.service.types.FindControl;
 import oracle.jbo.common.service.types.FindCriteria;
 import oracle.jbo.common.service.types.ProcessData;
@@ -248,30 +255,96 @@ public abstract class AbstractService implements Service {
                 
                 if ((item.getValue() != null) && !item.getValue().isEmpty()) {
                   logger.log(Level.FINEST, "first value: {0}", item.getValue().get(0));
+                  final Path path = root.get(camelize(item.getAttribute()));
                   
-                  if ("=".equals(item.getOperator())) {
-                    wherePredicates.add(add(cb, cb.equal(root.get(camelize(item.getAttribute())), item.getValue().get(0)), item));
+                  if (Operator.EQUALS.getValue().equals(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.equal(path, item.getValue().get(0)), item));
                   }
-                  else if ("<>".equals(item.getOperator())) {
-                    wherePredicates.add(add(cb, cb.notEqual(root.get(camelize(item.getAttribute())), item.getValue().get(0)), item));
+                  else if (Operator.NOT_EQUALS.getValue().equals(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.notEqual(path, item.getValue().get(0)), item));
                   }
-                  else if ("like".equals(item.getOperator())) {
-                    final String value = new StringBuilder().append(item.getValue().get(0)).append("%").toString();
+                  else if (Operator.GREATER_THAN_EQUALS.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.ge(path, Long.parseLong((String)item.getValue().get(0))), item));
+                  }
+                  else if (Operator.LESS_THAN_EQUALS.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.le(path, Long.parseLong((String)item.getValue().get(0))), item));
+                  }
+                  else if (Operator.GREATER_THAN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.greaterThan(path, Long.parseLong((String)item.getValue().get(0))), item));
+                  }
+                  else if (Operator.LESS_THAN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.lessThan(path, Long.parseLong((String)item.getValue().get(0))), item));
+                  }
+                  else if (Operator.LIKE.getValue().equalsIgnoreCase(item.getOperator())) {
+                    final String value = new StringBuilder("%").append(item.getValue().get(0)).append("%").toString();
                     logger.log(Level.FINEST, "string value: {0}", value);
-                    final Path<String> path = root.get(camelize(item.getAttribute()));
                     
                     if (item.getUpperCaseCompare()) {
-                      wherePredicates.add(add(cb, cb.like(cb.upper(path), value.toUpperCase()), item));
+                      wherePredicates.add(toPredicate(cb, cb.like(cb.upper(path), value.toUpperCase()), item));
                     }
                     else {
-                      wherePredicates.add(add(cb, cb.like(cb.lower(path), value.toLowerCase()), item));
+                      wherePredicates.add(toPredicate(cb, cb.like(cb.lower(path), value.toLowerCase()), item));
                     }
+                  }
+                  else if (Operator.STARTS_WITH.getValue().equalsIgnoreCase(item.getOperator())) {
+                    final String value = new StringBuilder().append(item.getValue().get(0)).append("%").toString();
+                    logger.log(Level.FINEST, "string value: {0}", value);
+                    
+                    if (item.getUpperCaseCompare()) {
+                      wherePredicates.add(toPredicate(cb, cb.like(cb.upper(path), value.toUpperCase()), item));
+                    }
+                    else {
+                      wherePredicates.add(toPredicate(cb, cb.like(cb.lower(path), value.toLowerCase()), item));
+                    }
+                  }
+                  else if (Operator.ENDS_WITH.getValue().equalsIgnoreCase(item.getOperator())) {
+                    final String value = new StringBuilder("%").append(item.getValue().get(0)).toString();
+                    logger.log(Level.FINEST, "string value: {0}", value);
+                    
+                    if (item.getUpperCaseCompare()) {
+                      wherePredicates.add(toPredicate(cb, cb.like(cb.upper(path), value.toUpperCase()), item));
+                    }
+                    else {
+                      wherePredicates.add(toPredicate(cb, cb.like(cb.lower(path), value.toLowerCase()), item));
+                    }
+                  }
+                  else if (Operator.BETWEEN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    if (path.getJavaType().isAssignableFrom(Date.class)) {
+                      wherePredicates.add(toPredicate(cb, cb.ge(path, DatatypeConverter.parseDateTime((String)item.getValue().get(0)).getTimeInMillis()), item));
+                      wherePredicates.add(toPredicate(cb, cb.le(path, DatatypeConverter.parseDateTime((String)item.getValue().get(1)).getTimeInMillis()), item));
+                    }
+                    else {
+                      wherePredicates.add(toPredicate(cb, cb.ge(path, Long.parseLong((String)item.getValue().get(0))), item));
+                      wherePredicates.add(toPredicate(cb, cb.le(path, Long.parseLong((String)item.getValue().get(1))), item));
+                    }
+                  }
+                  else if (Operator.NOT_BETWEEN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    if (path.getJavaType().isAssignableFrom(Date.class)) {
+                      wherePredicates.add(toPredicate(cb, cb.not(cb.ge(path, DatatypeConverter.parseDateTime((String)item.getValue().get(0)).getTimeInMillis())), item));
+                      wherePredicates.add(toPredicate(cb, cb.not(cb.le(path, DatatypeConverter.parseDateTime((String)item.getValue().get(1)).getTimeInMillis())), item));
+                    }
+                    else {
+                      wherePredicates.add(toPredicate(cb, cb.not(cb.ge(path, Long.parseLong((String)item.getValue().get(0)))), item));
+                      wherePredicates.add(toPredicate(cb, cb.not(cb.le(path, Long.parseLong((String)item.getValue().get(1)))), item));
+                    }
+                  }
+                  else if (Operator.CONTAINS.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.isNotNull(path), item));
+                  }
+                  else if (Operator.DOES_NOT_CONTAIN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.isNull(path), item));
+                  }
+                  else if (Operator.IN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, path.in(item.getValue()), item));
+                  }
+                  else if (Operator.NOT_IN.getValue().equalsIgnoreCase(item.getOperator())) {
+                    wherePredicates.add(toPredicate(cb, cb.not(path.in(item.getValue())), item));
                   }
                 }
               }
             }
             
-            if ("And".equals(group.getConjunction())) {
+            if (Operator.AND.getValue().equals(group.getConjunction())) {
               return cb.and(wherePredicates.toArray(new Predicate[0]));
             }
             
@@ -283,7 +356,7 @@ public abstract class AbstractService implements Service {
       return null;
     }
     
-    protected Predicate add(final CriteriaBuilder cb, final Predicate predicate, final ViewCriteriaItem item) {
+    protected Predicate toPredicate(final CriteriaBuilder cb, final Predicate predicate, final ViewCriteriaItem item) {
       if ("And".equals(item.getConjunction())) {
         return cb.and(predicate);
       }
